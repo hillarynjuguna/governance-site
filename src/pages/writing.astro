@@ -1,0 +1,73 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+
+const articles = [
+  {
+    title: 'Behavioral Layer Exposure: What Anthropic\'s Peak Hours Event Revealed',
+    date: '2025-04-15',
+    excerpt: 'An analysis of model behavioral patterns under load and what they reveal about governance surface area in production systems.',
+    tags: ['governance', 'behavioral-analysis', 'anthropic'],
+  },
+  {
+    title: 'The Bainbridge Warning: When AI Capability Outpaces Governance Infrastructure',
+    date: '2025-03-22',
+    excerpt: 'The foundational framework for identifying the gap between AI capability and governance infrastructure maturity.',
+    tags: ['bainbridge', 'institutional-risk', 'governance'],
+  },
+  {
+    title: 'SaaSpocalypse: The Field System as Fourth Product Category',
+    date: '2025-02-10',
+    excerpt: 'Why multi-model orchestration represents a fundamentally new category of software product.',
+    tags: ['market-analysis', 'product-strategy'],
+  },
+  {
+    title: 'Detection Theater: Why MMLU Scores Don\'t Measure What Organizations Need',
+    date: '2025-01-05',
+    excerpt: 'A critical examination of current AI evaluation metrics and their failure to address real-world governance requirements.',
+    tags: ['evaluation', 'governance', 'ai-safety'],
+  },
+];
+---
+
+<Layout
+  title="Writing"
+  description="Dispatches from the lab. Analysis, frameworks, and observations on AI governance."
+>
+  <!-- Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary">
+        Writing
+      </h1>
+      <p class="text-lg text-text-secondary mt-4">
+        Dispatches from the lab.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="py-12">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex flex-col gap-6">
+        {articles.map((article) => (
+          <article class="p-6 rounded-lg border border-border-subtle bg-surface transition-all hover:border-border group">
+            <span class="font-mono text-xs text-text-muted">{article.date}</span>
+            <h3 class="font-body text-lg font-semibold text-text-primary mt-2 group-hover:text-accent transition-colors">
+              {article.title}
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed mt-2">
+              {article.excerpt}
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              {article.tags.map((tag) => (
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-surface-raised text-text-muted">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

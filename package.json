@@ -1,0 +1,33 @@
+{
+  "name": "@hillary/governance-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/react": "^3.6.3",
+    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/vercel": "^7.8.2",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "astro": "^4.16.19",
+    "autoprefixer": "^10.5.0",
+    "lucide-react": "^1.16.0",
+    "postcss": "^8.5.14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
+  },
+  "private": "true"
+}

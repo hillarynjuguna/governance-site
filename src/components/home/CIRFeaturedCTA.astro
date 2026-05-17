@@ -1,0 +1,74 @@
+---
+const primitives = [
+  'Reversibility & Safeguards',
+  'Component Boundaries',
+  'Rules That Stay True',
+  'Who Decides What',
+];
+---
+
+<section class="py-20 bg-surface border-y border-border-subtle">
+  <div class="mx-auto max-w-container px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left -->
+      <div class="flex flex-col gap-5">
+        <span class="font-mono text-xs tracking-wider text-accent uppercase">
+          Anchor Operational Artifact
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl text-text-primary">
+          The CIR Diagnostic Engine
+        </h2>
+        <p class="text-text-secondary leading-relaxed max-w-lg">
+          You built something complex. Before it fails in production; audit it. CIR maps constitutional vulnerabilities across four governance primitives: reversibility, component boundaries, invariant rules, and decision authority. Interactive. Deployed. Actionable.
+        </p>
+
+        <!-- Primitive badges -->
+        <div class="flex flex-wrap gap-2 pt-1">
+          {primitives.map((p) => (
+            <span
+              class="font-mono text-xs px-3 py-1.5 rounded border"
+              style="color: var(--color-accent); border-color: var(--color-accent-dim); background: var(--color-accent-subtle);"
+            >
+              {p}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href="/cir"
+          class="inline-flex items-center gap-2 self-start rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-text-inverse transition-opacity hover:opacity-90 mt-2"
+        >
+          Run Diagnostic
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: Risk matrix visualization -->
+      <div class="flex justify-center">
+        <div class="grid grid-cols-4 gap-1 p-4 rounded-lg border border-border bg-surface-raised">
+          {Array.from({ length: 16 }).map((_, i) => {
+            const row = Math.floor(i / 4);
+            const col = i % 4;
+            const intensity = (row + col) / 6;
+            const opacity = intensity > 0.5 ? 0.3 + (intensity * 0.5) : 0.05;
+            const colors = [
+              'var(--color-accent)',
+              'var(--color-warning)',
+              'var(--color-layer-foundational)',
+              'var(--color-deployed)',
+            ];
+            const color = colors[(row + col) % 4];
+            return (
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded"
+                style={`background: ${color}; opacity: ${opacity};`}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

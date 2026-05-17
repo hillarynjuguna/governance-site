@@ -1,0 +1,123 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+---
+
+<Layout
+  title="Operational Demonstrations"
+  description="Interactive tools, walkthroughs, and visualizations of governance infrastructure. Evidence-first."
+>
+  <!-- Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary">
+        Operational Demonstrations
+      </h1>
+      <p class="text-lg text-text-secondary mt-4 max-w-2xl leading-relaxed">
+        Interactive tools, walkthroughs, and visualizations of governance infrastructure. Evidence-first.
+      </p>
+    </div>
+  </section>
+
+  <!-- Live Demos -->
+  <section class="py-12">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-xl text-text-primary mb-6">Live Demos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- CIR -->
+        <a
+          href="https://cir-diagnostic.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-5 rounded-lg border-2 border-accent/30 bg-surface transition-all hover:-translate-y-0.5 hover:border-accent/60"
+        >
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex items-center gap-1 text-xs text-deployed">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed animate-pulse" />
+              Live
+            </span>
+          </div>
+          <h3 class="font-body text-base font-semibold text-text-primary">CIR Diagnostic Engine</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mt-2">
+            Launch the constitutional governance audit tool. Upload a system description; receive a structural assessment.
+          </p>
+          <span class="inline-flex items-center gap-1 text-sm text-accent mt-4 group-hover:gap-2 transition-all">
+            Launch Diagnostic
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width={2}>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </span>
+          <p class="font-mono text-[10px] text-text-muted mt-3">
+            Deployed on Vercel. Multi-provider LLM architecture.
+          </p>
+        </a>
+
+        <!-- Ecosystem Topology -->
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary">Ecosystem Topology Explorer</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mt-2">
+            Interactive clickable graph of the repository ecosystem. Explore how components connect across the governance stack.
+          </p>
+          <span class="inline-flex items-center gap-1 text-sm text-text-muted mt-4">
+            Coming soon
+          </span>
+        </div>
+
+        <!-- Governance Walkthrough -->
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary">Governance Stack Walkthrough</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mt-2">
+            Step-by-step guided explanation of how a theoretical risk is audited in CIR and governed at the execution boundary.
+          </p>
+          <span class="inline-flex items-center gap-1 text-sm text-text-muted mt-4">
+            Coming soon
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visualizations -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-xl text-text-primary mb-6">Visualizations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Pipeline -->
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary mb-4">Governance-to-Execution Pipeline</h3>
+          <div class="flex items-center gap-2 font-mono text-xs flex-wrap">
+            <span class="framework-badge" style="color: var(--color-bainbridge); border-color: var(--color-bainbridge);">Bainbridge Warning</span>
+            <span class="text-text-muted">&rarr;</span>
+            <span class="framework-badge" style="color: var(--color-cir); border-color: var(--color-cir);">CIR Diagnostic Engine</span>
+            <span class="text-text-muted">&rarr;</span>
+            <span class="framework-badge" style="color: var(--color-rsps); border-color: var(--color-rsps);">Execution Boundary</span>
+          </div>
+        </div>
+
+        <!-- RSPS Six-Node -->
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary mb-4">RSPS Six-Node Interface</h3>
+          <div class="relative w-full h-32 flex items-center justify-center">
+            <!-- tau center -->
+            <div class="absolute w-8 h-8 rounded-full bg-accent flex items-center justify-center z-10">
+              <span class="font-mono text-[8px] text-text-inverse font-bold">&tau;</span>
+            </div>
+            <!-- surrounding nodes -->
+            {['phi', 'lambda', 'mu', 'gamma', 'rho'].map((node, i) => {
+              const angle = (i * 72 - 90) * (Math.PI / 180);
+              const x = 50 + 35 * Math.cos(angle);
+              const y = 50 + 35 * Math.sin(angle);
+              return (
+                <div
+                  class="absolute w-6 h-6 rounded-full bg-surface-raised border border-border flex items-center justify-center"
+                  style={`top: calc(${y}% - 12px); left: calc(${x}% - 12px);`}
+                >
+                  <span class="font-mono text-[6px] text-text-muted">{node}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

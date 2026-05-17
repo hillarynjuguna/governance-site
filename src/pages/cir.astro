@@ -1,0 +1,194 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+---
+
+<Layout
+  title="CIR Diagnostic Engine"
+  description="A constitutional governance audit tool for AI deployment architectures. Evaluates systems against four canonical governance primitives."
+>
+  <!-- Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Anchor Operational Artifact / Layer 3: Operational
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        The CIR Diagnostic Engine
+      </h1>
+      <p class="text-lg text-text-secondary mt-4 max-w-2xl leading-relaxed">
+        A constitutional governance audit tool for AI deployment architectures. Upload your system description. Receive a structural assessment against four canonical governance primitives.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 mt-8">
+        <span class="inline-flex items-center gap-1.5 text-sm text-deployed">
+          <span class="inline-block h-2 w-2 rounded-full bg-deployed animate-pulse" />
+          Live
+        </span>
+        <a
+          href="https://cir-diagnostic.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-text-inverse transition-opacity hover:opacity-90"
+        >
+          Launch Diagnostic
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        <a href="#methodology" class="text-sm text-text-secondary hover:text-text-primary transition-colors">
+          View methodology &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Four Primitives -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-10">
+        What CIR measures.
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          {
+            num: '01',
+            title: 'Reversibility & Safeguards',
+            desc: 'Can the system be rolled back? Are there fail-safe conditions? What happens at the boundary of an action that cannot be undone?',
+          },
+          {
+            num: '02',
+            title: 'Component Boundaries',
+            desc: 'Where does one component\'s authority end and another\'s begin? Are these boundaries explicit and enforceable, or implicit and porous?',
+          },
+          {
+            num: '03',
+            title: 'Rules That Stay True',
+            desc: 'Which invariants hold across all execution contexts? What governs behavior when edge cases emerge that no policy explicitly anticipated?',
+          },
+          {
+            num: '04',
+            title: 'Who Decides What',
+            desc: 'Where does decision authority reside? Is the human sovereign\'s primacy structurally enforced, or merely assumed?',
+          },
+        ].map((p) => (
+          <div class="p-5 rounded-lg border border-border-subtle bg-surface" style="border-left: 2px solid var(--color-accent);">
+            <span class="font-mono text-xs text-accent">{p.num}</span>
+            <h3 class="font-body text-base font-semibold text-text-primary mt-2">{p.title}</h3>
+            <p class="text-sm text-text-secondary leading-relaxed mt-2">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-10">
+        CIR in action.
+      </h2>
+
+      <div class="flex flex-col gap-6">
+        {[
+          {
+            title: 'Multi-Agent Deployment Audit',
+            scenario: 'A workflow connecting three AI models to a customer-facing system lacked explicit boundaries between model outputs and execution actions.',
+            finding: 'Primitive 2 (Component Boundaries) scored absent. Primitive 4 (Decision Authority) scored absent. Overall: High Governance Risk.',
+            remediation: 'Explicit boundary contracts added at execution seams; human review checkpoint inserted before irreversible actions.',
+            impact: 'Deployment proceeded with clear governance posture; incident risk reduced.',
+          },
+          {
+            title: 'Autonomous Agent Rule Enforcement',
+            scenario: 'An autonomous coding agent operated with no persistent rule enforcement mechanism; its guidelines existed only in prompt context.',
+            finding: 'Primitive 3 (Rules That Stay True) scored absent; rules were neither persistent nor enforced at the architectural layer.',
+            remediation: 'Constitutional rule layer introduced using sovereign-types primitives; rules moved from prompt to architecture.',
+            impact: 'Agent behavior became auditable; governance posture shifted from assumed to verifiable.',
+          },
+          {
+            title: 'Healthcare AI Decision Workflow',
+            scenario: 'A clinical decision support system had no documented reversibility mechanism for AI-generated recommendations that had already been acted upon.',
+            finding: 'Primitive 1 (Reversibility & Safeguards) scored partially present; soft safeguards only, no structural rollback mechanism.',
+            remediation: 'CE-Ledger audit trail integrated for all AI-generated recommendations; explicit hold states introduced before downstream clinical action.',
+            impact: 'Auditability established; organizational liability posture improved.',
+          },
+        ].map((cs) => (
+          <article class="p-6 rounded-lg border border-border-subtle bg-surface">
+            <h3 class="font-body text-lg font-semibold text-text-primary mb-4">{cs.title}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm leading-relaxed">
+              <div>
+                <span class="font-mono text-xs text-text-muted uppercase">Scenario</span>
+                <p class="text-text-secondary mt-1">{cs.scenario}</p>
+              </div>
+              <div>
+                <span class="font-mono text-xs text-text-muted uppercase">CIR Finding</span>
+                <p class="text-accent mt-1">{cs.finding}</p>
+              </div>
+              <div>
+                <span class="font-mono text-xs text-text-muted uppercase">Remediation</span>
+                <p class="text-text-secondary mt-1">{cs.remediation}</p>
+              </div>
+              <div>
+                <span class="font-mono text-xs text-text-muted uppercase">Impact</span>
+                <p class="text-deployed mt-1">{cs.impact}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem Integration -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-10">
+        How CIR connects to the stack.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            label: 'CIR &larr; Bainbridge Warning',
+            desc: 'The risk thresholds and governance primitives in CIR are derived from the Bainbridge Warning framework. Theory becomes diagnostic criteria.',
+          },
+          {
+            label: 'CIR &rarr; CE-Ledger',
+            desc: 'CIR diagnostic outputs can be logged to CE-Ledger, creating a persistent provenance record of governance assessments across a system\'s lifecycle.',
+          },
+          {
+            label: 'CIR &harr; delta-instrument',
+            desc: 'delta-instrument extends CIR\'s point-in-time diagnostic to continuous monitoring, detecting drift from the constitutional posture established at audit time.',
+          },
+        ].map((conn) => (
+          <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+            <h3 class="font-mono text-sm text-accent mb-3" set:html={conn.label} />
+            <p class="text-sm text-text-secondary leading-relaxed">{conn.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section id="methodology" class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container-narrow px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-6">
+        How the engine works.
+      </h2>
+      <div class="flex flex-col gap-4 text-text-secondary leading-relaxed text-sm">
+        <p>
+          CIR operates through a two-stage pipeline. In the first stage, a multi-provider LLM (Anthropic, Gemini, or Mistral) interprets the submitted system description, extracting structural features relevant to governance assessment. This interpretation is explicitly separated from the scoring authority.
+        </p>
+        <p>
+          In the second stage, a deterministic Boolean scoring matrix evaluates the interpreted system against the four CIR primitives. The scoring is not probabilistic; it produces a definitive presence or absence for each primitive, creating an auditable record of constitutional posture.
+        </p>
+        <p>
+          This separation of model interpretation from constitutional authority is the core architectural guarantee. The LLM provides analysis; the governance framework provides judgment. Neither function encroaches on the other.
+        </p>
+        <p>
+          The provider-agnostic design means CIR is not dependent on any single AI vendor. The diagnostic primitives are fixed and universal; the interpretive layer is replaceable and upgradeable.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

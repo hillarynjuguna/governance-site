@@ -1,0 +1,120 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+
+const projects = [
+  {
+    title: 'CIR Diagnostic Engine',
+    layer: 'operational',
+    layerColor: 'var(--color-layer-operational)',
+    status: 'deployed',
+    summary: 'Full constitutional governance audit tool for AI architectures. Interactive, multi-provider, deterministic scoring.',
+    frameworks: ['CIR Diagnostic Engine'],
+  },
+  {
+    title: 'hillary-njuguna-intelligence-site',
+    layer: 'translational',
+    layerColor: 'var(--color-layer-translational)',
+    status: 'deployed',
+    summary: 'Personal intelligence platform (this site); itself a demonstration of the governance philosophy it describes.',
+    frameworks: ['RSPS Architecture'],
+  },
+  {
+    title: 'Writ: RAG Enforcement Engine',
+    layer: 'operational',
+    layerColor: 'var(--color-layer-operational)',
+    status: 'active',
+    summary: 'Hybrid RAG engine for AI coding agents. Five-stage knowledge retrieval and rule enforcement pipeline.',
+    frameworks: ['CE-Ledger'],
+  },
+  {
+    title: 'sovereign-types',
+    layer: 'foundational',
+    layerColor: 'var(--color-layer-foundational)',
+    status: 'active',
+    summary: 'TypeScript provenance contract layer for verifiable AI intelligence lineage.',
+    frameworks: ['sovereign-types'],
+  },
+  {
+    title: 'cv-santiago',
+    layer: 'translational',
+    layerColor: 'var(--color-layer-translational)',
+    status: 'deployed',
+    summary: 'Interactive AI-powered CV. React 19, TypeScript, Claude API. Demonstrates applied conversational AI for professional identity.',
+    frameworks: ['CIR Diagnostic Engine'],
+  },
+  {
+    title: 'GTM Engine (Tapau/Quickin)',
+    layer: 'translational',
+    layerColor: 'var(--color-layer-translational)',
+    status: 'deployed',
+    summary: 'F&amp;B compliance and customer intelligence platform. LHDN MyInvois API integration. WhatsApp Cloud API. Six-agent intelligence engine.',
+    frameworks: ['RSPS Architecture', 'delta-instrument'],
+  },
+];
+---
+
+<Layout
+  title="Case Studies & Implementations"
+  description="Theory in applied form. Projects demonstrating governance infrastructure in practice."
+>
+  <!-- Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary">
+        Case Studies &amp; Implementations
+      </h1>
+      <p class="text-lg text-text-secondary mt-4">
+        Theory in applied form.
+      </p>
+
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap gap-3 mt-8">
+        {['All', 'Governance', 'Orchestration', 'Infrastructure', 'Applied Products', 'Education'].map((filter, i) => (
+          <button
+            class={`text-sm px-4 py-2 rounded-md border transition-colors ${
+              i === 0
+                ? 'bg-accent text-text-inverse border-accent'
+                : 'border-border-subtle text-text-secondary hover:text-text-primary hover:border-border'
+            }`}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Grid -->
+  <section class="py-12">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <article class="p-5 rounded-lg border border-border-subtle bg-surface transition-all hover:border-border hover:-translate-y-0.5">
+            <div class="flex items-center justify-between mb-3">
+              <span class="layer-tag" style={`color: ${project.layerColor}; border-color: ${project.layerColor};`}>
+                {project.layer.charAt(0).toUpperCase() + project.layer.slice(1)} Layer
+              </span>
+              <span class={`inline-flex items-center gap-1 text-xs ${
+                project.status === 'deployed' ? 'text-deployed' : 'text-accent'
+              }`}>
+                <span class={`inline-block h-1.5 w-1.5 rounded-full ${
+                  project.status === 'deployed' ? 'bg-deployed' : 'bg-accent'
+                }`} />
+                {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+              </span>
+            </div>
+            <h3 class="font-body text-base font-semibold text-text-primary">{project.title}</h3>
+            <p class="text-sm text-text-secondary leading-relaxed mt-2">{project.summary}</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              {project.frameworks.map((fw) => (
+                <span class="framework-badge text-[10px]" style="color: var(--color-accent); border-color: var(--color-accent-dim);">
+                  {fw}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

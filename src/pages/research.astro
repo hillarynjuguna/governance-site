@@ -1,0 +1,82 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+
+const research = [
+  {
+    title: 'The Bainbridge Warning: Diagnosing Institutional AI Failure',
+    type: 'Framework',
+    date: '2025-03',
+    abstract: 'Proposes a structured framework for understanding the gap between AI capability and governance infrastructure maturity in institutional contexts. Introduces four governance primitives for measuring and addressing constitutional vulnerability in AI deployments.',
+    frameworks: ['Bainbridge Warning'],
+  },
+  {
+    title: 'Distributed Cognition as Foundational Behavior (DCFB)',
+    type: 'Framework',
+    date: '2025-01',
+    abstract: 'Argues that intelligence in human-AI systems distributes across a relational field rather than residing in individual agents. Introduces a "fear bypass mechanism" and four governance primitives for distributed cognitive systems grounded in active inference and process philosophy.',
+    frameworks: ['RSPS Architecture'],
+  },
+  {
+    title: 'Constitutional Manifold Crossing Protocol (CMCP)',
+    type: 'Specification',
+    date: '2024-11',
+    abstract: 'A layer specification for preserving constitutional integrity as intelligence structures cross architectural boundaries in complex multi-model systems.',
+    frameworks: ['RSPS Architecture', 'sovereign-types'],
+  },
+  {
+    title: 'The Cognitive Diffusion Prior',
+    type: 'Framework',
+    date: '2024-09',
+    abstract: 'Extends DeepMind Unified Latents into single-subject personalized generative model construction, establishing a genuinely novel contribution to the field of personalized AI architecture.',
+    frameworks: ['RSPS Architecture'],
+  },
+];
+---
+
+<Layout
+  title="From the Lab: Advancing AI Governance"
+  description="Whitepapers, framework specifications, and theoretical contributions to the field of constitutional AI and cognitive architecture."
+>
+  <!-- Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary">
+        From the Lab: Advancing AI Governance
+      </h1>
+      <p class="text-lg text-text-secondary mt-4 max-w-2xl leading-relaxed">
+        Whitepapers, framework specifications, and theoretical contributions to the field of constitutional AI and cognitive architecture.
+      </p>
+    </div>
+  </section>
+
+  <!-- Research Grid -->
+  <section class="py-12">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex flex-col gap-6">
+        {research.map((paper) => (
+          <article class="p-6 rounded-lg border border-border-subtle bg-surface transition-all hover:border-border">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="font-mono text-xs px-2 py-1 rounded bg-accent-subtle text-accent">
+                {paper.type}
+              </span>
+              <span class="font-mono text-xs text-text-muted">{paper.date}</span>
+            </div>
+            <h3 class="font-body text-lg font-semibold text-text-primary mb-2">
+              {paper.title}
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed mb-3">
+              {paper.abstract}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {paper.frameworks.map((fw) => (
+                <span class="framework-badge text-xs" style={`color: var(--color-cir); border-color: var(--color-cir);`}>
+                  {fw}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

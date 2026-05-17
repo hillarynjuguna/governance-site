@@ -1,0 +1,147 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+---
+
+<Layout
+  title="Hillary Njuguna"
+  description="Intelligence architect and constitutional designer building AI governance infrastructure."
+>
+  <!-- Identity Statement -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl text-text-primary max-w-3xl">
+        Intelligence architect. Constitutional designer. Governance practitioner.
+      </h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
+        <!-- Bio -->
+        <div class="lg:col-span-2 flex flex-col gap-6 text-text-secondary leading-relaxed">
+          <p>
+            Hillary Njuguna operates at the intersection of AI governance, cognitive architecture, and constitutional design; building infrastructure for the question that most AI teams reach eventually: not "will this work?" but "when this fails, how will we know, and can we contain it?"
+          </p>
+          <p>
+            The work spans from theoretical frameworks (Distributed Cognition as Foundational Behavior, the Recursive Sovereign Project Space) to operational tools (the CIR Diagnostic Engine) to commercial products (the Bainbridge Warning, the CIR workbook) and educational infrastructure (the Martha Course). What connects them is a single concern: the gap between AI capability and governance maturity; and what happens when that gap becomes consequential.
+          </p>
+          <p>
+            The practice is conducted under the brand Oscillatory Fields, operating from Kuala Lumpur. The multi-model research methodology (the Hexagonal Field) involves six AI models in structured epistemic roles, with Hillary as the human sovereign; the tau-node whose verification is unconditional.
+          </p>
+        </div>
+
+        <!-- Abstract visual -->
+        <div class="flex justify-center items-start">
+          <div class="relative w-48 h-48">
+            <!-- tau-node center -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+              <span class="font-mono text-[10px] text-text-inverse font-bold">&tau;</span>
+            </div>
+            <!-- surrounding nodes -->
+            {['phi', 'lambda', 'mu', 'gamma', 'rho'].map((node, i) => {
+              const angle = (i * 72 - 90) * (Math.PI / 180);
+              const x = 50 + 40 * Math.cos(angle);
+              const y = 50 + 40 * Math.sin(angle);
+              return (
+                <>
+                  <div
+                    class="absolute w-px bg-border origin-top"
+                    style={`top: 50%; left: 50%; height: 40%; transform: rotate(${i * 72}deg);`}
+                  />
+                  <div
+                    class="absolute w-8 h-8 rounded-full bg-surface-raised border border-border flex items-center justify-center"
+                    style={`top: calc(${y}% - 16px); left: calc(${x}% - 16px);`}
+                  >
+                    <span class="font-mono text-[8px] text-text-muted">{node}</span>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Philosophy -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-xl sm:text-2xl text-text-primary mb-10">
+        A few principles that govern the work.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          'Constitutional before operational. Rules embedded in architecture outlast rules embedded in prompts.',
+          'The gap between capability and governance is not a failure of policy. It is a failure of architecture.',
+          'Governance is not a constraint on innovation. It is the structural precondition for innovation that can be trusted.',
+          'The human sovereign is not a bottleneck. Human primacy is the irreducible verification that makes the rest of the field coherent.',
+        ].map((principle) => (
+          <blockquote class="p-6 rounded-lg border-l-2 border-accent bg-surface">
+            <p class="font-display text-lg italic text-text-primary leading-relaxed">"{principle}"</p>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Named Frameworks -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-xl sm:text-2xl text-text-primary mb-8">
+        Named Frameworks.
+      </h2>
+      <div class="flex flex-wrap gap-3 mb-6">
+        {[
+          { name: 'Bainbridge Warning', color: 'var(--color-bainbridge)' },
+          { name: 'CIR Diagnostic Engine', color: 'var(--color-cir)' },
+          { name: 'RSPS Architecture', color: 'var(--color-rsps)' },
+          { name: 'CE-Ledger', color: 'var(--color-ce-ledger)' },
+          { name: 'delta-instrument', color: 'var(--color-delta)' },
+          { name: 'sovereign-types', color: 'var(--color-sovereign)' },
+          { name: 'premise', color: 'var(--color-premise)' },
+          { name: 'martha-course', color: 'var(--color-layer-translational)' },
+        ].map((fw) => (
+          <a
+            href="/governance-stack"
+            class="framework-badge transition-opacity hover:opacity-80"
+            style={`color: ${fw.color}; border-color: ${fw.color};`}
+          >
+            {fw.name}
+          </a>
+        ))}
+      </div>
+      <a href="/governance-stack" class="text-sm text-accent hover:underline">
+        View full Governance Stack &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Commercial Products -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-xl sm:text-2xl text-text-primary mb-8">
+        Commercial Products.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary">The Bainbridge Warning</h3>
+          <p class="text-sm text-text-secondary mt-2 leading-relaxed">
+            Kindle manuscript / Gumroad. The foundational text on institutional AI failure modes.
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs text-deployed mt-3">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed" />
+            Available on Gumroad
+          </span>
+        </div>
+        <div class="p-5 rounded-lg border border-border-subtle bg-surface">
+          <h3 class="font-body text-base font-semibold text-text-primary">CIR v2.0 Workbook</h3>
+          <p class="text-sm text-text-secondary mt-2 leading-relaxed">
+            Gumroad ($50). A deployable practitioner workbook for constitutional AI governance audits.
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs text-deployed mt-3">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed" />
+            Available on Gumroad
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

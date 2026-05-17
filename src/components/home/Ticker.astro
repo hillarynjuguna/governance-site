@@ -1,0 +1,28 @@
+---
+const tickerItems = [
+  'CIR Diagnostic Engine',
+  'Bainbridge Warning',
+  'RSPS Architecture',
+  'CE-Ledger',
+  'delta-instrument',
+  'sovereign-types',
+  'premise',
+  'martha-course',
+  'Constitutional AI Governance',
+  'Runtime Diagnostics',
+  'Multi-Model Orchestration',
+  'Provenance Infrastructure',
+];
+---
+
+<section class="overflow-hidden border-t border-border-subtle py-4 bg-surface">
+  <div class="flex ticker-track whitespace-nowrap">
+    <!-- Double the items for seamless loop -->
+    {[...tickerItems, ...tickerItems].map((item) => (
+      <span class="inline-flex items-center mx-6 font-mono text-sm text-accent/60">
+        {item}
+        <span class="ml-6 text-border">.</span>
+      </span>
+    ))}
+  </div>
+</section>

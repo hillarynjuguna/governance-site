@@ -1,0 +1,49 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description = 'AI governance infrastructure, constitutional design, and runtime diagnostics. CIR Diagnostic Engine and the Bainbridge Warning framework.',
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const fullTitle = `${title} | Oscillatory Fields`;
+const siteUrl = 'https://hillary-site.vercel.app';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${siteUrl}/assets/og-image.svg`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`${siteUrl}${canonical}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <link rel="canonical" href={`${siteUrl}${canonical}`} />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="min-h-screen bg-ground text-text-primary antialiased">
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

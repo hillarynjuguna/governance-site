@@ -1,0 +1,78 @@
+---
+import { footerQuickLinks, stackFrameworks } from '@/data/navigation';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border-subtle bg-ground mt-auto">
+  <div class="mx-auto max-w-container px-6 py-16">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <!-- Left: Brand -->
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-0">
+          <span class="font-display text-xl text-text-primary">Oscillatory Fields</span>
+          <span class="font-mono text-xs text-text-muted">hillary njuguna</span>
+        </div>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-xs">
+          AI Governance Infrastructure. Constitutional Design. Runtime Assurance.
+        </p>
+        <p class="text-xs text-text-muted mt-2">
+          &copy; {year} Hillary Njuguna
+        </p>
+      </div>
+
+      <!-- Center: Quick links -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-text-muted">Navigation</h3>
+        <nav class="flex flex-col gap-2">
+          {footerQuickLinks.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm text-text-secondary hover:text-text-primary transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Right: Stack frameworks -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-text-muted">The Governance Stack</h3>
+        <ul class="flex flex-col gap-2">
+          {stackFrameworks.map((fw) => (
+            <li>
+              <a
+                href="/governance-stack"
+                class="font-mono text-xs framework-badge transition-opacity hover:opacity-80"
+                style={`color: var(--color-${fw === 'CIR Diagnostic Engine' ? 'cir' : fw === 'Bainbridge Warning' ? 'bainbridge' : fw === 'RSPS Architecture' ? 'rsps' : fw === 'CE-Ledger' ? 'ce-ledger' : fw === 'delta-instrument' ? 'delta' : fw === 'sovereign-types' ? 'sovereign' : 'text-muted'}); border-color: var(--color-${fw === 'CIR Diagnostic Engine' ? 'cir' : fw === 'Bainbridge Warning' ? 'bainbridge' : fw === 'RSPS Architecture' ? 'rsps' : fw === 'CE-Ledger' ? 'ce-ledger' : fw === 'delta-instrument' ? 'delta' : fw === 'sovereign-types' ? 'sovereign' : 'text-muted'});`}
+              >
+                {fw}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <span class="font-mono text-xs text-text-muted">
+        hillary-njuguna.vercel.app
+      </span>
+      <div class="flex items-center gap-4">
+        <a href="https://linkedin.com/in/hillarynjuguna" target="_blank" rel="noopener noreferrer" class="text-xs text-text-muted hover:text-text-secondary transition-colors">
+          LinkedIn
+        </a>
+        <a href="https://github.com/hillarynjuguna" target="_blank" rel="noopener noreferrer" class="text-xs text-text-muted hover:text-text-secondary transition-colors">
+          GitHub
+        </a>
+      </div>
+      <span class="font-mono text-xs text-text-muted">
+        Built on the governance principles it demonstrates.
+      </span>
+    </div>
+  </div>
+</footer>

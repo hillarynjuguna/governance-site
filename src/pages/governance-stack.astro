@@ -1,0 +1,176 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import StackLayerDiagram from '@/components/governance-stack/StackLayerDiagram';
+---
+
+<Layout
+  title="The AI Governance Stack"
+  description="From theoretical primitives to deployed diagnostics. Eight components across four functional layers."
+>
+  <!-- Page Hero -->
+  <section class="pt-20 pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary">
+        The AI Governance Stack
+      </h1>
+      <p class="text-lg text-text-secondary mt-4 max-w-2xl leading-relaxed">
+        From theoretical primitives to deployed diagnostics. Eight components across four functional layers; designed as an interoperable governance infrastructure, not a collection of tools.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Diagram -->
+  <section class="py-12">
+    <div class="mx-auto max-w-container px-6">
+      <StackLayerDiagram client:load />
+    </div>
+  </section>
+
+  <!-- Dependency Logic -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-6">
+        How the layers depend on each other.
+      </h2>
+      <p class="text-text-secondary leading-relaxed max-w-3xl mb-8">
+        Operational tools like the CIR Diagnostic Engine are built upon resilient infrastructure (CE-Ledger, RSPS Architecture), which are in turn designed based on solid foundational principles (Bainbridge Warning, premise). This dependency logic is not incidental; it is the architecture of trust itself.
+      </p>
+
+      <!-- Dependency arrows -->
+      <div class="flex flex-col gap-4 font-mono text-sm p-6 rounded-lg border border-border bg-surface overflow-x-auto">
+        <div class="flex items-center gap-3 text-text-secondary whitespace-nowrap">
+          <span class="text-layer-foundational">premise</span>
+          <span class="text-text-muted">&rarr;</span>
+          <span class="text-bainbridge">Bainbridge Warning</span>
+          <span class="text-text-muted">&rarr;</span>
+          <span class="text-rsps">RSPS Architecture</span>
+          <span class="text-text-muted">&rarr;</span>
+          <span class="text-cir">CIR Diagnostic Engine</span>
+        </div>
+        <div class="flex items-center gap-3 text-text-secondary whitespace-nowrap">
+          <span class="text-sovereign">sovereign-types</span>
+          <span class="text-text-muted">&rarr;</span>
+          <span class="text-ce-ledger">CE-Ledger</span>
+          <span class="text-text-muted">&rarr;</span>
+          <span class="text-cir">CIR Diagnostic Engine</span>
+        </div>
+        <div class="flex items-center gap-3 text-text-secondary whitespace-nowrap">
+          <span class="text-delta">delta-instrument</span>
+          <span class="text-text-muted">&harr;</span>
+          <span class="text-cir">CIR Diagnostic Engine</span>
+        </div>
+        <div class="flex items-center gap-3 text-text-secondary whitespace-nowrap">
+          <span class="text-layer-translational">martha-course</span>
+          <span class="text-text-muted">&larr;</span>
+          <span class="text-text-muted">(all components)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Component Detail Cards -->
+  <section class="py-16 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <h2 class="font-display text-2xl sm:text-3xl text-text-primary mb-10">
+        All Components.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {
+            name: 'Bainbridge Warning',
+            badgeColor: 'var(--color-bainbridge)',
+            layer: 'Foundational',
+            layerColor: 'var(--color-layer-foundational)',
+            desc: 'Defines critical thresholds and failure modes in complex AI systems. Identifies the gap between high AI capability and inadequate governance infrastructure. Provides four diagnostic primitives for measuring institutional AI risk.',
+            status: 'Deployed',
+          },
+          {
+            name: 'CIR Diagnostic Engine',
+            badgeColor: 'var(--color-cir)',
+            layer: 'Operational',
+            layerColor: 'var(--color-layer-operational)',
+            desc: 'A deployed, interactive web application for auditing AI deployment architectures against four constitutional governance primitives. Deterministically scores architectures by extracting a Boolean presence matrix from LLM analysis.',
+            status: 'Deployed',
+            isAnchor: true,
+          },
+          {
+            name: 'RSPS Architecture',
+            badgeColor: 'var(--color-rsps)',
+            layer: 'Infrastructural',
+            layerColor: 'var(--color-layer-infra)',
+            desc: 'Defines the Recursive Sovereign Project Space; a six-node cognitive architecture for human-AI collaboration where intelligence emerges from the relational field between a human sovereign (tau-node) and an ensemble of AI instruments.',
+            status: 'Active',
+          },
+          {
+            name: 'CE-Ledger',
+            badgeColor: 'var(--color-ce-ledger)',
+            layer: 'Infrastructural',
+            layerColor: 'var(--color-layer-infra)',
+            desc: 'A provenance and audit trail system for tracking decisions and actions within AI workflows. The term "Ledger" signals immutability, auditability, and traceability; the operational substrate for AI accountability.',
+            status: 'Active',
+          },
+          {
+            name: 'sovereign-types',
+            badgeColor: 'var(--color-sovereign)',
+            layer: 'Foundational',
+            layerColor: 'var(--color-layer-foundational)',
+            desc: 'A TypeScript contract layer defining foundational data structures for managing provenance within AI systems. ProvenanceIdSchema and ProvenanceEnvelope establish the shared dependency for any system requiring verifiable intelligence lineage.',
+            status: 'Active',
+          },
+          {
+            name: 'delta-instrument',
+            badgeColor: 'var(--color-delta)',
+            layer: 'Operational',
+            layerColor: 'var(--color-layer-operational)',
+            desc: 'A cross-architecture epistemic interferometer; measures changes, drift, and deviations in system behavior and policy alignment. Provides continuous monitoring and evaluation capabilities complementing CIR\'s point-in-time diagnostics.',
+            status: 'Active',
+          },
+          {
+            name: 'premise',
+            badgeColor: 'var(--color-premise)',
+            layer: 'Foundational',
+            layerColor: 'var(--color-layer-foundational)',
+            desc: 'The foundational set of assumptions, principles, and ethical guidelines governing the ecosystem\'s design. Establishes the values and ethical boundaries that inform every other component; the constitution beneath the constitutional tools.',
+            status: 'Deployed',
+          },
+          {
+            name: 'martha-course',
+            badgeColor: 'var(--color-layer-translational)',
+            layer: 'Translational',
+            layerColor: 'var(--color-layer-translational)',
+            desc: 'A 12-module practitioner training program for constitutional AI governance. Translates the governance stack into practitioner fluency. The Tongue-Tie Diagnostic is the founding frame: the gap between knowing a governance principle and being able to apply it.',
+            status: 'Active',
+          },
+        ].map((comp) => (
+          <div class={`p-5 rounded-lg border transition-all hover:-translate-y-0.5 ${comp.isAnchor ? 'border-accent/30 bg-accent-subtle' : 'border-border-subtle bg-surface'}`}>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="framework-badge" style={`color: ${comp.badgeColor}; border-color: ${comp.badgeColor};`}>
+                {comp.name}
+              </span>
+              {comp.isAnchor && <span class="text-accent text-sm">&#9733;</span>}
+            </div>
+            <span class="layer-tag mb-3 inline-block" style={`color: ${comp.layerColor}; border-color: ${comp.layerColor};`}>
+              {comp.layer} Layer
+            </span>
+            <p class="text-sm text-text-secondary leading-relaxed mt-3">{comp.desc}</p>
+            <span class="inline-flex items-center gap-1 text-xs text-deployed mt-3">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed" />
+              {comp.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+</style>
