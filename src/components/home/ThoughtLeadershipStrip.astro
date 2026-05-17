@@ -5,18 +5,21 @@ const articles = [
     date: '2025-04',
     excerpt: 'An analysis of model behavioral patterns under load and what they reveal about governance surface area in production systems.',
     tags: ['governance', 'behavioral-analysis', 'anthropic'],
+    href: '/writing',
   },
   {
     title: 'The Bainbridge Warning: When AI Capability Outpaces Governance Infrastructure',
     date: '2025-03',
     excerpt: 'The foundational framework for identifying the gap between AI capability and governance infrastructure maturity.',
     tags: ['bainbridge', 'institutional-risk', 'governance'],
+    href: '/bainbridge-warning',
   },
   {
     title: 'SaaSpocalypse: The Field System as Fourth Product Category',
     date: '2025-02',
     excerpt: 'Why multi-model orchestration represents a fundamentally new category of software product.',
     tags: ['market-analysis', 'product-strategy'],
+    href: '/writing',
   },
 ];
 ---
@@ -29,7 +32,7 @@ const articles = [
 
     <div class="flex flex-col gap-6">
       {articles.map((article) => (
-        <article class="group flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-lg border border-border-subtle bg-surface transition-all hover:border-border">
+        <a href={article.href} class="group flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-lg border border-border-subtle bg-surface transition-all hover:border-border">
           <div class="flex flex-col gap-2 flex-1">
             <span class="font-mono text-xs text-text-muted">{article.date}</span>
             <h3 class="font-body text-base font-semibold text-text-primary group-hover:text-accent transition-colors">
@@ -46,13 +49,11 @@ const articles = [
               ))}
             </div>
           </div>
-          <a href="/writing" class="self-start sm:self-center inline-flex items-center gap-1 text-sm text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+          <span class="self-start sm:self-center inline-flex items-center gap-1 text-sm text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity">
             Read
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </article>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </span>
+        </a>
       ))}
     </div>
 

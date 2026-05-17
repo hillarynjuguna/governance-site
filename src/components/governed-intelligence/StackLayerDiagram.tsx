@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { GOVERNANCE_STACK_DATA, type StackComponent, type StackLayer } from '@/data/governance-stack';
+import { GOVERNANCE_STACK_DATA, type StackComponent, type StackLayer } from '@/data/governed-intelligence';
 
 interface DetailPanelProps {
   component: StackComponent | null;
@@ -116,7 +116,7 @@ function DetailPanel({ component, onClose }: DetailPanelProps) {
           )}
 
           <a
-            href={component.id === 'cir' ? '/cir' : '/governance-stack'}
+            href={component.id === 'cir' ? '/cir-diagnostic-engine' : '/governed-intelligence'}
             className="inline-flex items-center gap-1 text-sm text-accent hover:underline"
           >
             View in detail

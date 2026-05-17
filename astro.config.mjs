@@ -12,5 +12,5 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     mdx(),
   ],
-  site: 'https://hillary-site.vercel.app',
+  site: 'https://governance-site.vercel.app',
 });

@@ -4,7 +4,6 @@ const projects = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
     summary: z.string(),
     governanceLayer: z.enum(['foundational', 'infrastructural', 'operational', 'translational']),
     frameworks: z.array(z.string()),

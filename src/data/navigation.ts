@@ -5,22 +5,20 @@ export interface NavItem {
 }
 
 export const primaryNav: NavItem[] = [
-  { label: 'Governance Stack', href: '/governance-stack' },
-  { label: 'CIR Diagnostic', href: '/cir', badge: 'Live' },
+  { label: 'Governance Stack', href: '/governed-intelligence' },
+  { label: 'Bainbridge Warning', href: '/bainbridge-warning' },
+  { label: 'CIR Diagnostic', href: '/cir-diagnostic-engine', badge: 'Live' },
   { label: 'Research', href: '/research' },
-  { label: 'Projects', href: '/projects' },
   { label: 'Writing', href: '/writing' },
-  { label: 'Demos', href: '/demos' },
   { label: 'Contact', href: '/contact' },
 ];
 
 export const footerQuickLinks: NavItem[] = [
-  { label: 'Governance Stack', href: '/governance-stack' },
-  { label: 'CIR Diagnostic', href: '/cir' },
+  { label: 'Governance Stack', href: '/governed-intelligence' },
+  { label: 'Bainbridge Warning', href: '/bainbridge-warning' },
+  { label: 'CIR Diagnostic', href: '/cir-diagnostic-engine' },
   { label: 'Research', href: '/research' },
-  { label: 'Projects', href: '/projects' },
   { label: 'Writing', href: '/writing' },
-  { label: 'Demos', href: '/demos' },
   { label: 'Contact', href: '/contact' },
 ];
 
