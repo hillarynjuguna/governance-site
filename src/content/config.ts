@@ -37,4 +37,12 @@ const writing = defineCollection({
   }),
 });
 
-export const collections = { projects, research, writing };
+const core = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
+export const collections = { projects, research, writing, core };
