@@ -1,18 +1,24 @@
 ---
 import Layout from '@/components/layout/Layout.astro';
+import PublicationPortal from '@/components/shared/PublicationPortal.astro';
 import { getEntry } from 'astro:content';
 
 const warningEntry = await getEntry('core', 'bainbridge-warning');
-const { Content, headings } = warningEntry
-  ? await warningEntry.render()
-  : { Content: () => null, headings: [] };
 
 // Estimate reading time (avg 230 wpm)
 const wordCount = warningEntry?.body?.split(/\s+/).length ?? 0;
 const readingTime = Math.ceil(wordCount / 230);
 
-// Filter to H2 and H3 only for TOC
-const tocHeadings = headings.filter((h: { depth: number }) => h.depth <= 3);
+const apaCitation = "Njuguna, H. (2026). The Bainbridge Warning: Behavioral Layer Exposure and Institutional AI Failure (Vol. 1). Cognitive Infrastructure Series, Oscillatory Fields.";
+const chicagoCitation = "Njuguna, Hillary. The Bainbridge Warning: Behavioral Layer Exposure and Institutional AI Failure. Vol. 1. Cognitive Infrastructure Series. Oscillatory Fields, 2026.";
+const bibtexCitation = `@book{njuguna2026bainbridge,
+  author    = {Njuguna, Hillary},
+  title     = {The Bainbridge Warning: Behavioral Layer Exposure and Institutional AI Failure},
+  series    = {Cognitive Infrastructure Series},
+  volume    = {1},
+  year      = {2026},
+  publisher = {Oscillatory Fields}
+}`;
 ---
 
 <Layout
@@ -145,102 +151,20 @@ const tocHeadings = headings.filter((h: { depth: number }) => h.depth <= 3);
     </div>
   </section>
 
-  <div class="pt-24 pb-24 max-w-[1400px] mx-auto px-6">
-    <div class="max-w-4xl mx-auto mb-16 text-center">
-      <h2 class="text-2xl font-mono tracking-widest uppercase text-text-muted">The Complete Text</h2>
-    </div>
-
-    <!-- Two-column layout: TOC sidebar + content -->
-    <div class="flex gap-12 items-start">
-      <!-- Sticky TOC sidebar (desktop only) -->
-      {tocHeadings.length > 0 && (
-        <aside class="hidden xl:block w-64 flex-shrink-0 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
-          <span class="font-mono text-xs uppercase tracking-wider text-text-muted block mb-4">Contents</span>
-          <nav class="flex flex-col gap-1" id="toc-nav">
-            {tocHeadings.map((h: { depth: number; slug: string; text: string }) => (
-              <a
-                href={`#${h.slug}`}
-                data-toc-link
-                class={`toc-link block text-xs leading-snug transition-colors duration-150 py-1 border-l-2 border-border-subtle hover:border-accent hover:text-text-primary ${
-                  h.depth === 2
-                    ? 'pl-3 text-text-secondary font-medium'
-                    : 'pl-5 text-text-muted'
-                }`}
-              >
-                {h.text}
-              </a>
-            ))}
-          </nav>
-        </aside>
-      )}
-
-      <!-- Main document content -->
-      <div class="flex-1 min-w-0">
-        <div class="prose prose-invert prose-lg max-w-none
-          prose-headings:font-display prose-headings:font-normal prose-headings:scroll-mt-32
-          prose-h1:text-4xl
-          prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
-          prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
-          prose-a:text-accent hover:prose-a:text-white
-          prose-p:leading-relaxed prose-p:text-text-secondary
-          prose-strong:text-white
-          prose-blockquote:border-l-accent prose-blockquote:bg-white/5 prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-text-primary prose-blockquote:rounded-r-sm
-          prose-code:text-accent prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-          prose-hr:border-white/10
-        ">
-          {warningEntry ? <Content /> : <p>Content loading...</p>}
-        </div>
-
-        <!-- Bottom navigation -->
-        <div class="mt-24 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-          <a href="/" class="text-sm text-text-muted hover:text-text-secondary transition-colors flex items-center gap-1">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
-            Home
-          </a>
-          <div class="flex gap-4">
-            <a href="/governed-intelligence" class="text-sm text-text-muted hover:text-text-secondary transition-colors">Governance Stack →</a>
-            <a href="/cir-diagnostic-engine" class="text-sm text-accent hover:text-white transition-colors font-medium">Run the CIR Diagnostic →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <PublicationPortal
+    id="bainbridge"
+    title="The Bainbridge Warning"
+    subtitle="Behavioral Layer Exposure and Institutional AI Failure"
+    pdfUrl="/bainbridge-warning.pdf"
+    metadata={[
+      { label: 'Author', value: 'Hillary Njuguna' },
+      { label: 'Format', value: 'Book (Vol. 1)' },
+      { label: 'Length', value: `${wordCount.toLocaleString()} words` },
+      { label: 'Reading Time', value: `${readingTime} minutes` },
+      { label: 'Released', value: 'April 2026' }
+    ]}
+    apaCitation={apaCitation}
+    chicagoCitation={chicagoCitation}
+    bibtexCitation={bibtexCitation}
+  />
 </Layout>
-
-<script>
-  // Back to top
-  const btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      btn?.classList.remove('opacity-0', 'pointer-events-none');
-    } else {
-      btn?.classList.add('opacity-0', 'pointer-events-none');
-    }
-  });
-  btn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  // TOC active link highlight on scroll
-  const tocLinks = document.querySelectorAll('[data-toc-link]');
-  const headingEls = document.querySelectorAll('.prose h2, .prose h3');
-
-  if (tocLinks.length && headingEls.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            tocLinks.forEach((link) => {
-              link.classList.remove('border-accent', 'text-accent', 'text-text-primary');
-              link.classList.add('border-border-subtle', 'text-text-secondary');
-            });
-            const id = entry.target.id;
-            const active = document.querySelector(`[data-toc-link][href="#${id}"]`);
-            active?.classList.add('border-accent', 'text-accent');
-            active?.classList.remove('border-border-subtle', 'text-text-secondary');
-          }
-        });
-      },
-      { rootMargin: '-20% 0px -70% 0px' }
-    );
-    headingEls.forEach((el) => observer.observe(el));
-  }
-</script>
