@@ -1,0 +1,291 @@
+# Publication Download Portals Implementation Plan
+
+> **For Antigravity:** REQUIRED SUB-SKILL: Load executing-plans to implement this plan task-by-task.
+
+**Goal:** Remove inline markdown book text from the Bainbridge Warning page, clean up layout scrolling scripts, and add matching resource download/citation portals to both Bainbridge Warning and Governance Activation Gap pages.
+
+**Architecture:** We will build a reusable `PublicationPortal.astro` component that encapsulates the mock cover, download CTA buttons, and tabbed citation copy widget. We will then import it into both pages, removing the heavy 22k-word Markdown tree and TOC sidebar from `bainbridge-warning.astro`.
+
+**Tech Stack:** Astro, React/Astro client JS script, Tailwind CSS.
+
+---
+
+### Task 1: Create Reusable PublicationPortal Component
+
+**Files:**
+- Create: `src/components/shared/PublicationPortal.astro`
+
+**Step 1: Write component code**
+Create `src/components/shared/PublicationPortal.astro` containing the visual mockup, download buttons, citation copy widget, and client script.
+
+```astro
+---
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  pdfUrl: string;
+  epubUrl?: string;
+  metadata: { label: string; value: string }[];
+  apaCitation: string;
+  chicagoCitation: string;
+  bibtexCitation: string;
+}
+
+const {
+  id,
+  title,
+  subtitle,
+  pdfUrl,
+  epubUrl = '#',
+  metadata,
+  apaCitation,
+  chicagoCitation,
+  bibtexCitation
+} = Astro.props;
+---
+
+<section class="py-24 bg-surface border-t border-border-color relative overflow-hidden" id={`download-${id}`}>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-accent/5 via-surface to-ground pointer-events-none"></div>
+  
+  <div class="max-w-container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Visual Cover Mockup -->
+      <div class="lg:col-span-5 xl:col-span-4 flex justify-center">
+        <div class="w-full max-w-[320px] aspect-[3/4] bg-ground border border-border-color p-8 rounded-md shadow-2xl relative flex flex-col justify-between overflow-hidden group select-none">
+          <!-- Geometric Accent -->
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl group-hover:bg-accent/20 transition-all duration-500"></div>
+          
+          <div>
+            <div class="text-[10px] font-mono tracking-widest text-accent uppercase mb-2">Oscillatory Fields</div>
+            <h4 class="text-2xl font-display text-text-primary mb-2 italic leading-tight">{title}</h4>
+            <div class="text-xs text-text-secondary font-mono leading-relaxed line-clamp-3">{subtitle}</div>
+          </div>
+          
+          <div class="border-t border-border-color pt-4 mt-4">
+            {metadata.map((item) => (
+              <div class="flex justify-between text-[11px] font-mono py-0.5">
+                <span class="text-text-muted">{item.label}</span>
+                <span class="text-text-secondary">{item.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Details and Action Station -->
+      <div class="lg:col-span-7 xl:col-span-8 flex flex-col justify-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 border border-accent/20 text-accent text-xs font-mono uppercase tracking-widest mb-6 w-fit">
+          Resource Center
+        </div>
+        
+        <h3 class="text-3xl font-display text-text-primary mb-4">Download & Citation Access</h3>
+        <p class="text-text-secondary text-sm leading-relaxed mb-8 max-w-2xl">
+          Access the full print-ready document or citation formats for research, publication, or archiving. Select a format below or copy citations to clipboard.
+        </p>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-4 mb-8">
+          <a href={pdfUrl} download class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-ground font-mono text-sm uppercase tracking-widest font-bold hover:bg-white transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download PDF
+          </a>
+          
+          <a href={epubUrl} class="epub-btn inline-flex items-center justify-center gap-2 px-6 py-3 border border-border-color text-text-secondary font-mono text-sm uppercase tracking-widest hover:border-accent hover:text-accent transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Download EPUB
+          </a>
+        </div>
+        
+        <!-- Citation Widget -->
+        <div class="publication-portal bg-ground border border-border-color rounded-md p-6 max-w-3xl" data-portal-id={id}>
+          <div class="flex justify-between items-center border-b border-border-color pb-4 mb-4">
+            <span class="text-xs font-mono text-text-secondary uppercase">Cite This Publication</span>
+            
+            <button data-copy-citation-btn class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-border-color rounded hover:border-accent hover:text-accent font-mono text-xs text-text-secondary transition-all duration-200">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          
+          <div class="flex gap-2 mb-4 border-b border-border-subtle pb-2">
+            <button data-citation-tab="apa" class="px-3 py-1 border-b-2 border-accent text-accent font-mono text-xs transition-colors duration-200">APA</button>
+            <button data-citation-tab="chicago" class="px-3 py-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary font-mono text-xs transition-colors duration-200">Chicago</button>
+            <button data-citation-tab="bibtex" class="px-3 py-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary font-mono text-xs transition-colors duration-200">BibTeX</button>
+          </div>
+          
+          <div class="font-mono text-xs text-text-primary leading-relaxed bg-surface/50 p-4 border border-border-subtle rounded break-all min-h-[4.5rem] flex items-center">
+            <div data-citation-content="apa" class="w-full">{apaCitation}</div>
+            <div data-citation-content="chicago" class="w-full hidden">{chicagoCitation}</div>
+            <div data-citation-content="bibtex" class="w-full hidden whitespace-pre-wrap">{bibtexCitation}</div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  const portals = document.querySelectorAll('.publication-portal');
+  portals.forEach((portal) => {
+    const tabs = portal.querySelectorAll('[data-citation-tab]');
+    const contents = portal.querySelectorAll('[data-citation-content]');
+    const copyBtn = portal.querySelector('[data-copy-citation-btn]');
+    
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetStyle = tab.getAttribute('data-citation-tab');
+        
+        tabs.forEach((t) => {
+          t.classList.remove('text-accent', 'border-accent');
+          t.classList.add('text-text-secondary', 'border-transparent');
+        });
+        tab.classList.add('text-accent', 'border-accent');
+        tab.classList.remove('text-text-secondary', 'border-transparent');
+        
+        contents.forEach((content) => {
+          if (content.getAttribute('data-citation-content') === targetStyle) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    copyBtn?.addEventListener('click', () => {
+      let activeContent = '';
+      contents.forEach((content) => {
+        if (!content.classList.contains('hidden')) {
+          activeContent = content.textContent?.trim() || '';
+        }
+      });
+      
+      if (activeContent) {
+        navigator.clipboard.writeText(activeContent).then(() => {
+          const origHtml = copyBtn.innerHTML;
+          copyBtn.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-deployed animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-deployed font-bold">Copied!</span>
+          `;
+          copyBtn.classList.add('border-deployed/50', 'bg-deployed/10');
+          setTimeout(() => {
+            copyBtn.innerHTML = origHtml;
+            copyBtn.classList.remove('border-deployed/50', 'bg-deployed/10');
+          }, 2000);
+        });
+      }
+    });
+  });
+
+  // Handle EPUB clicks with placeholder alert if EPUB files aren't physically present
+  const epubButtons = document.querySelectorAll('.epub-btn');
+  epubButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href');
+      if (href === '#' || href === '') {
+        e.preventDefault();
+        alert('EPUB build is in preparation and will be available for download shortly.');
+      }
+    });
+  });
+</script>
+```
+
+**Step 2: Verify component compiles**
+Run compilation checks (`npm run build`) to ensure the syntax is valid.
+Expected: Build passes with no syntax or compiler errors in the new component.
+
+**Step 3: Commit**
+```bash
+git add src/components/shared/PublicationPortal.astro
+git commit -m "feat: add reusable PublicationPortal component"
+```
+
+---
+
+### Task 2: Update Bainbridge Warning Page Layout
+
+**Files:**
+- Modify: `src/pages/bainbridge-warning.astro`
+
+**Step 1: Replace content blocks**
+Modify `src/pages/bainbridge-warning.astro`:
+- Remove imports of `warningEntry` content renderer.
+- Import `PublicationPortal` from `@/components/shared/PublicationPortal.astro`.
+- Remove TOC filtering and rendering code.
+- Remove "The Complete Text" scroll sections and layout.
+- Append the `<PublicationPortal>` component at the bottom before the `</Layout>`.
+- Set props with specific book parameters:
+  - `id`: `"bainbridge"`
+  - `title`: `"The Bainbridge Warning"`
+  - `subtitle`: `"Behavioral Layer Exposure and Institutional AI Failure"`
+  - `pdfUrl`: `"/bainbridge-warning.pdf"`
+  - `metadata`: `[{ label: 'Author', value: 'Hillary Njuguna' }, { label: 'Format', value: 'Book (Vol. 1)' }, { label: 'Length', value: '22,053 words' }, { label: 'Released', value: 'April 2026' }]`
+  - `apaCitation`, `chicagoCitation`, `bibtexCitation` as per specs.
+
+**Step 2: Build check**
+Run `npm run build` to confirm integration compiles correctly.
+Expected: Build completes successfully.
+
+**Step 3: Commit**
+```bash
+git add src/pages/bainbridge-warning.astro
+git commit -m "refactor: replace inline book text with download portal on Bainbridge Warning page"
+```
+
+---
+
+### Task 3: Update Governance Activation Gap Page Layout
+
+**Files:**
+- Modify: `src/pages/governance-activation-gap.astro`
+
+**Step 1: Append publication portal**
+Modify `src/pages/governance-activation-gap.astro`:
+- Import `PublicationPortal` from `@/components/shared/PublicationPortal.astro`.
+- Append the `<PublicationPortal>` component at the bottom of the page before the closing `</Layout>` tag.
+- Set props with specific paper parameters:
+  - `id`: `"activation-gap"`
+  - `title`: `"The Governance Activation Gap"`
+  - `subtitle`: `"Toward a Runtime Governance Calculus in Agentic AI Systems"`
+  - `pdfUrl`: `"/governance-activation-gap.pdf"`
+  - `metadata`: `[{ label: 'Author', value: 'Hillary Njuguna' }, { label: 'Format', value: 'Working Paper' }, { label: 'Status', value: 'Revision v6' }, { label: 'Released', value: 'May 2026' }]`
+  - `apaCitation`, `chicagoCitation`, `bibtexCitation` as per specs.
+
+**Step 2: Build check**
+Run `npm run build` to confirm integration.
+Expected: Build completes successfully.
+
+**Step 3: Commit**
+```bash
+git add src/pages/governance-activation-gap.astro
+git commit -m "feat: add download portal to Governance Activation Gap page"
+```
+
+---
+
+### Task 4: Verify Full Build and Vercel Ready State
+
+**Files:**
+- Verify: Full codebase build
+
+**Step 1: Run build**
+Run: `npm run build`
+Expected: Output completes with no errors and prerenders all pages.
+
+**Step 2: Commit and push changes**
+```bash
+git push origin main
+```
