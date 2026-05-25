@@ -30,42 +30,124 @@ const tocHeadings = headings.filter((h: { depth: number }) => h.depth <= 3);
     </svg>
   </button>
 
-  <div class="pt-28 pb-24 max-w-[1400px] mx-auto px-6">
-    <!-- Page header -->
-    <div class="max-w-4xl mx-auto mb-12">
-      <span class="font-mono text-xs tracking-wider text-accent uppercase">Cognitive Infrastructure Series · Book 1</span>
-      <h1 class="text-4xl sm:text-5xl font-display italic text-text-primary mt-3 mb-4 leading-tight">The Bainbridge Warning</h1>
-      <p class="text-xl text-text-secondary max-w-2xl">Diagnosing Institutional AI Failure and the Behavioral Layer Exposure.</p>
-
-      <!-- Meta row -->
-      <div class="flex flex-wrap items-center gap-6 mt-6 pt-6 border-t border-white/10">
-        <span class="font-mono text-xs text-text-muted">Hillary Njuguna · Oscillatory Fields</span>
-        <span class="font-mono text-xs text-text-muted">Version 2.0 · April 2026</span>
-        <span class="font-mono text-xs text-text-muted">{readingTime} min read · {wordCount.toLocaleString()} words</span>
+  <!-- Scrollytelling Executive Intro -->
+  <section class="relative pt-32 pb-24 border-b border-border-subtle bg-surface overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-surface to-ground pointer-events-none"></div>
+    <div class="relative max-w-container mx-auto px-6 z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 border border-accent/30 text-accent text-xs font-mono uppercase tracking-widest mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        Cognitive Infrastructure Series · Book 1
       </div>
-    </div>
-
-    <!-- PDF CTA -->
-    <div class="max-w-4xl mx-auto flex flex-col gap-3 mb-16 border-b border-white/10 pb-10">
+      <h1 class="text-5xl sm:text-7xl font-display italic text-text-primary mb-6 leading-tight tracking-tight">
+        The Bainbridge <br/><span class="text-accent not-italic">Warning</span>
+      </h1>
+      <p class="text-xl text-text-secondary max-w-2xl font-body leading-relaxed mb-8">
+        Diagnosing Institutional AI Failure and the Behavioral Layer Exposure.
+      </p>
+      <div class="flex items-center gap-4 border-t border-border-subtle pt-6 mb-8">
+        <span class="text-sm font-mono text-text-muted">Hillary Njuguna</span>
+        <span class="text-sm font-mono text-text-muted">|</span>
+        <span class="text-sm font-mono text-text-muted">Version 2.0 · April 2026</span>
+        <span class="text-sm font-mono text-text-muted">|</span>
+        <span class="text-sm font-mono text-text-muted">{readingTime} min read · {wordCount.toLocaleString()} words</span>
+      </div>
+      
+      <!-- CTA Buttons -->
       <div class="flex flex-wrap items-center gap-4">
-        <a
-          href="/bainbridge-warning.pdf"
-          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-bg-dark rounded-none font-semibold hover:bg-white transition-colors w-fit text-sm"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        <a href="/bainbridge-warning.pdf" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-bg-dark font-mono text-sm uppercase tracking-widest font-bold hover:bg-white transition-colors">
           Download PDF (Placeholder)
         </a>
-        <a
-          href="https://cir-diagnostic-engine.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-accent/30 text-accent rounded-none font-semibold hover:bg-accent/10 transition-colors w-fit text-sm"
-        >
-          Run the CIR Diagnostic
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        <a href="https://cir-diagnostic-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-accent/30 text-accent font-mono text-sm uppercase tracking-widest hover:bg-accent/10 transition-colors">
+          Run the CIR Diagnostic →
         </a>
       </div>
-      <p class="text-xs text-text-muted italic">Note: The PDF is a placeholder pending the author's final version release.</p>
+    </div>
+  </section>
+
+  <!-- The Structural Irony Callout -->
+  <section class="py-32 bg-ground relative overflow-hidden border-b border-border-subtle">
+    <div class="max-w-container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl sm:text-6xl font-display text-text-primary font-bold tracking-tight leading-tight max-w-4xl">
+        Designers build systems to replace unreliable humans, <br/>
+        <span class="text-accent">then depend on those humans to intervene when the system fails.</span>
+      </h2>
+      <p class="mt-8 text-xl text-text-muted font-mono max-w-2xl">
+        — The Automation Irony (Bainbridge, 1983)
+      </p>
+    </div>
+  </section>
+
+  <!-- Behavioral Layer Exposure Grid -->
+  <section class="py-24 bg-surface border-b border-border-subtle">
+    <div class="max-w-container mx-auto px-6">
+      <div class="mb-16">
+        <h2 class="text-3xl font-display text-text-primary mb-4">Behavioral Layer Exposure (BLE)</h2>
+        <p class="text-text-secondary max-w-3xl text-lg">The condition wherein governance mechanisms exist in artifacts (policies, committees, documentation) but the system's behavioral layer operates entirely unconstrained by them.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 border-t-4 border-warning bg-ground">
+          <span class="text-warning font-mono text-xs uppercase tracking-widest mb-4 block">Mode 01</span>
+          <h3 class="text-xl font-display text-text-primary mb-3">Governance Theater</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            The production of governance artifacts that cannot be present at the point of decision where AI systems act. Documentation provides legal shield but zero causal constraint.
+          </p>
+        </div>
+        
+        <div class="p-8 border-t-4 border-warning bg-ground">
+          <span class="text-warning font-mono text-xs uppercase tracking-widest mb-4 block">Mode 02</span>
+          <h3 class="text-xl font-display text-text-primary mb-3">Capability Overhang</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            The system possesses operational capabilities that the deploying organization's governance architecture is structurally incapable of instrumenting or controlling.
+          </p>
+        </div>
+
+        <div class="p-8 border-t-4 border-accent bg-ground">
+          <span class="text-accent font-mono text-xs uppercase tracking-widest mb-4 block">Mode 03</span>
+          <h3 class="text-xl font-display text-text-primary mb-3">Oversight Saturation</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            The architectural condition where the system generates intervention demands faster than the human oversight layer can process with genuine attention.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostic Metrics -->
+  <section class="py-24 bg-ground border-b border-border-subtle">
+    <div class="max-w-container mx-auto px-6">
+      <h2 class="text-3xl font-display text-text-primary mb-12 text-center">Diagnostic Metrics for BLE</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div class="bg-surface p-8 border border-accent/20 relative">
+          <div class="absolute -top-4 left-8 bg-ground border border-accent/30 px-3 py-1 text-accent font-mono text-xs uppercase">Metric A</div>
+          <h3 class="text-2xl font-display text-text-primary mb-4 mt-2">Transparency Velocity</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-4">
+            The rate at which oversight data is generated. When Transparency Velocity exceeds human processing bandwidth, transparency becomes an obfuscation tactic rather than a governance mechanism.
+          </p>
+          <div class="bg-ground p-4 border-l-2 border-accent text-sm font-mono text-text-muted">
+            High Velocity + Low Efficacy = Theater
+          </div>
+        </div>
+
+        <div class="bg-surface p-8 border border-accent/20 relative">
+          <div class="absolute -top-4 left-8 bg-ground border border-accent/30 px-3 py-1 text-accent font-mono text-xs uppercase">Metric B</div>
+          <h3 class="text-2xl font-display text-text-primary mb-4 mt-2">Restriction Symmetry</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-4">
+            The ratio of constraints placed on the human operator vs. constraints placed on the AI system. High asymmetry indicates a governance architecture designed to protect the system from the human, rather than the organization from the system.
+          </p>
+          <div class="bg-ground p-4 border-l-2 border-accent text-sm font-mono text-text-muted">
+            Constraint Ratio > 1 = Misalignment
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pt-24 pb-24 max-w-[1400px] mx-auto px-6">
+    <div class="max-w-4xl mx-auto mb-16 text-center">
+      <h2 class="text-2xl font-mono tracking-widest uppercase text-text-muted">The Complete Text</h2>
     </div>
 
     <!-- Two-column layout: TOC sidebar + content -->

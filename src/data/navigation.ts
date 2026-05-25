@@ -7,6 +7,7 @@ export interface NavItem {
 export const primaryNav: NavItem[] = [
   { label: 'Governance Stack', href: '/governed-intelligence' },
   { label: 'Bainbridge Warning', href: '/bainbridge-warning' },
+  { label: 'Activation Gap', href: '/governance-activation-gap' },
   { label: 'CIR Diagnostic', href: '/cir-diagnostic-engine', badge: 'Live' },
   { label: 'Research', href: '/research' },
   { label: 'Writing', href: '/writing' },
@@ -16,6 +17,7 @@ export const primaryNav: NavItem[] = [
 export const footerQuickLinks: NavItem[] = [
   { label: 'Governance Stack', href: '/governed-intelligence' },
   { label: 'Bainbridge Warning', href: '/bainbridge-warning' },
+  { label: 'Activation Gap', href: '/governance-activation-gap' },
   { label: 'CIR Diagnostic', href: '/cir-diagnostic-engine' },
   { label: 'Research', href: '/research' },
   { label: 'Writing', href: '/writing' },
