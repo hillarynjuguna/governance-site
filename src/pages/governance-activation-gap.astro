@@ -1,0 +1,446 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+---
+
+<Layout
+  title="The Governance Activation Gap | Hillary Njuguna"
+  description="Toward a Runtime Governance Calculus in Agentic AI Systems."
+>
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-24 border-b border-border-color bg-surface overflow-hidden">
+    <!-- background effect -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-warning/10 via-surface to-ground"></div>
+    <div class="relative max-w-container mx-auto px-6 z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-warning/10 border border-warning/30 text-warning text-xs font-mono uppercase tracking-widest mb-6">
+        <span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+        Working Paper v6
+      </div>
+      <h1 class="text-5xl sm:text-7xl font-display text-text-primary mb-6 leading-tight tracking-tight">
+        The Governance <br/><span class="text-warning">Activation Gap</span>
+      </h1>
+      <p class="text-xl text-text-secondary max-w-2xl font-body leading-relaxed mb-8">
+        Toward a Runtime Governance Calculus in Agentic AI Systems.
+      </p>
+      <div class="flex items-center gap-4 border-t border-border-color pt-6">
+        <span class="text-sm font-mono text-text-muted">Hillary Njuguna</span>
+        <span class="text-sm font-mono text-text-muted">|</span>
+        <span class="text-sm font-mono text-text-muted">May 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract & Section 1: Declaration -->
+  <section class="py-24 bg-ground">
+    <div class="max-w-container mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="text-3xl font-display text-text-primary mb-6">Governance as Declaration</h2>
+          <p class="text-text-secondary leading-relaxed mb-6">
+            Current AI governance frameworks evaluate oversight primarily through documentation completeness and organizational process coverage. This approach is well suited to bounded, static AI systems but becomes structurally insufficient for agentic systems capable of sequential action, tool use, and cross-boundary operation.
+          </p>
+        </div>
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 bg-surface-raised border border-border-color">
+            <h3 class="text-xl font-display text-warning mb-4">The Governance Theater Problem</h3>
+            <p class="text-text-muted text-sm leading-relaxed mb-4">
+              Organizations tend to achieve documentation completeness without establishing whether their governance mechanisms function under the dynamic conditions of deployed systems.
+            </p>
+            <p class="text-text-muted text-sm leading-relaxed">
+              Governance theater is the production of governance artifacts (policies, committees, templates) that cannot be present at the point of decision where AI systems act.
+            </p>
+          </div>
+          <div class="p-8 bg-surface-raised border border-border-color">
+            <h3 class="text-xl font-display text-warning mb-4">What the Architect Misses</h3>
+            <p class="text-text-muted text-sm leading-relaxed">
+              Most existing AI governance frameworks operate on a static model. They specify required oversight mechanisms but provide comparatively less operational specificity on the conditions under which declared governance mechanisms actually activate, the evidence required to confirm activation occurred, and the causal relationship between activation and behavioral constraint.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anatomy of the Activation Gap (3 columns) -->
+  <section class="py-24 border-y border-border-color bg-surface relative">
+    <div class="max-w-container mx-auto px-6 relative z-10">
+      <div class="mb-16 max-w-3xl">
+        <h2 class="text-4xl font-display text-text-primary mb-6">Anatomy of the Activation Gap</h2>
+        <p class="text-xl text-text-secondary">
+          The divergence between declared governance and operational governance manifests through three distinct structural failure modes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 border-l-4 border-warning bg-ground">
+          <h3 class="text-2xl font-display text-text-primary mb-4">Declaration Without Activation</h3>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            Oversight mechanisms exist in documentation but do not fire under the conditions they were designed to address. The mechanism is present. It does not activate.
+          </p>
+          <p class="text-text-muted text-sm leading-relaxed">
+            This failure mode has a direct parallel in the Behavioral Layer Exposure (BLE) framework. The "governance theater" described in BLE is structurally identical to declaration without activation. The behavioral layer operates independently of the governance artifact.
+          </p>
+        </div>
+        
+        <div class="p-8 border-l-4 border-warning bg-ground">
+          <h3 class="text-2xl font-display text-text-primary mb-4">Activation Without Consequence</h3>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            Oversight mechanisms activate but activation does not alter system behavior. Visibility is not intervention. Logging is not control. Escalation is not behavioral constraint.
+          </p>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Anthropic's RSP illustrates the challenge. The question is whether assessment triggers, once activated, produce behavioral consequences commensurate with the risk identified, or whether institutional pressures attenuate the causal chain.
+          </p>
+        </div>
+
+        <div class="p-8 border-l-4 border-warning bg-ground">
+          <h3 class="text-2xl font-display text-text-primary mb-4">Scope Mismatch</h3>
+          <p class="text-text-muted text-sm leading-relaxed mb-4">
+            Governance mechanisms activate correctly within the designed system, but the system's operational behavior extends beyond that scope—especially when crossing organizational or infrastructural boundaries.
+          </p>
+          <p class="text-text-muted text-sm leading-relaxed">
+            The OWASP Top 10 for Agentic Applications codifies this. ASI02 (Tool Misuse) and ASI03 (Privilege Abuse) are instantiations of scope mismatch where operational reach exceeds the governed perimeter.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amplification Mechanisms (3 columns with abstract visuals) -->
+  <section class="py-24 bg-ground">
+    <div class="max-w-container mx-auto px-6">
+      <div class="mb-16">
+        <h2 class="text-3xl font-display text-text-primary mb-4">Three Amplification Mechanisms</h2>
+        <p class="text-text-secondary max-w-3xl">The activation gap is not unique to agentic AI, but agentic systems amplify the gap through specific structural mechanisms.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Mechanism 1 -->
+        <div class="group cursor-default">
+          <div class="h-48 mb-6 bg-surface-raised border border-border-color overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-warning/20 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <!-- Abstract pattern -->
+            <svg class="absolute inset-0 w-full h-full text-warning/10" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,100 C30,50 70,50 100,0 L100,100 Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-display text-text-primary mb-3">Sequential Action Accumulation</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            Agentic systems pursue goals through sequences of actions. Each step creates conditions for the next that original governance may not anticipate. This creates a reversibility window problem: the interval during which intervention can meaningfully alter effects shrinks with each completed action.
+          </p>
+        </div>
+
+        <!-- Mechanism 2 -->
+        <div class="group cursor-default">
+          <div class="h-48 mb-6 bg-surface-raised border border-border-color overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <svg class="absolute inset-0 w-full h-full text-accent/10" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,0 L100,100 M50,0 L100,50 M0,50 L50,100" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-display text-text-primary mb-3">Cross-Boundary Operation</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            When an agent's action chain crosses boundaries (using external APIs or other agents), oversight mechanisms may have no reach into the new context. Policy Cards propose attaching governance directly to the agent to persist across these transitions.
+          </p>
+        </div>
+
+        <!-- Mechanism 3 -->
+        <div class="group cursor-default">
+          <div class="h-48 mb-6 bg-surface-raised border border-border-color overflow-hidden relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-warning/20 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+            <svg class="absolute inset-0 w-full h-full text-warning/10" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-display text-text-primary mb-3">Oversight Saturation</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            Sequential action chains move faster than human review cycles. This produces a structural throughput ceiling where the architecture generates more intervention decisions than human oversight can process with genuine attention—an expression of the ironies of automation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Primitive Layer -->
+  <section class="py-24 border-y border-border-color bg-surface">
+    <div class="max-w-container mx-auto px-6">
+      <h2 class="text-4xl font-display text-text-primary mb-12 text-center">The Primitive Layer: A First-Generation Vocabulary</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-ground border border-warning/30 p-6 relative">
+          <div class="absolute -top-3 -left-3 w-6 h-6 bg-warning rounded-sm"></div>
+          <h3 class="text-xl font-display text-warning mb-4 mt-2">Activation Primitives</h3>
+          <div class="space-y-4">
+            <div>
+              <strong class="text-text-primary block mb-1">Activation Event (AE)</strong>
+              <p class="text-sm text-text-muted">A state transition where governance moves from passive to causal participation. Requires trigger, firing, and conditional dependence.</p>
+            </div>
+            <div>
+              <strong class="text-text-primary block mb-1">Activation Integrity (AIg)</strong>
+              <p class="text-sm text-text-muted">The rate at which declared governance mechanisms activate correctly under designed conditions. <br/><code>AIg = Successful / Required</code></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-ground border border-warning/30 p-6 relative">
+          <div class="absolute -top-3 -left-3 w-6 h-6 bg-warning rounded-sm"></div>
+          <h3 class="text-xl font-display text-warning mb-4 mt-2">Intervention Primitives</h3>
+          <div class="space-y-4">
+            <div>
+              <strong class="text-text-primary block mb-1">Intervention Efficacy (IE)</strong>
+              <p class="text-sm text-text-muted">The degree to which intervention materially alters agent trajectory. High visibility with low IE is governance theater.</p>
+            </div>
+            <div>
+              <strong class="text-text-primary block mb-1">Reversibility Window (RW)</strong>
+              <p class="text-sm text-text-muted">The temporal interval during which intervention can meaningfully alter system effects before irrevocable state is reached.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-ground border border-warning/30 p-6 relative">
+          <div class="absolute -top-3 -left-3 w-6 h-6 bg-warning rounded-sm"></div>
+          <h3 class="text-xl font-display text-warning mb-4 mt-2">Temporal & Boundary Dynamics</h3>
+          <div class="space-y-4">
+            <div>
+              <strong class="text-text-primary block mb-1">Governance Latency (GL)</strong>
+              <p class="text-sm text-text-muted">Elapsed time between trigger, activation, and effective intervention.</p>
+            </div>
+            <div>
+              <strong class="text-text-primary block mb-1">Boundary Transition Event (BTE)</strong>
+              <p class="text-sm text-text-muted">Agent crosses into domain not covered by originating architecture.</p>
+            </div>
+            <div>
+              <strong class="text-text-primary block mb-1">Governance Surface Area (GSA)</strong>
+              <p class="text-sm text-text-muted">Total operational territory requiring effective activation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GL > RW Callout -->
+  <section class="py-32 bg-ground relative overflow-hidden">
+    <div class="absolute inset-0 bg-warning/5"></div>
+    <div class="max-w-container mx-auto px-6 relative z-10 text-center">
+      <h2 class="text-8xl sm:text-[10rem] font-display text-warning font-bold tracking-tighter leading-none mb-8">
+        GL > RW
+      </h2>
+      <p class="text-2xl sm:text-3xl text-text-primary font-display max-w-4xl mx-auto leading-tight mb-16">
+        When Governance Latency exceeds the Reversibility Window, governance intervention becomes operationally symbolic.
+      </p>
+
+      <!-- Flowchart visual -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 max-w-3xl mx-auto">
+        <div class="px-6 py-4 bg-surface border border-border-color text-center">
+          <span class="block text-warning font-mono text-xs uppercase tracking-widest mb-1">t(0)</span>
+          <strong class="text-text-primary">Trigger</strong>
+          <span class="block text-xs text-text-muted mt-1">Condition Detected</span>
+        </div>
+        <div class="h-8 md:h-px w-px md:w-16 bg-border-color relative">
+          <div class="absolute right-[-4px] md:-right-1 bottom-[-4px] md:top-[-4px] w-2 h-2 border-r-2 border-b-2 border-border-color transform rotate-45 md:-rotate-45"></div>
+        </div>
+        <div class="px-6 py-4 border-2 border-warning/50 bg-warning/10 text-center relative">
+          <span class="block text-warning font-mono text-xs uppercase tracking-widest mb-1">Duration</span>
+          <strong class="text-text-primary">Governance Latency</strong>
+        </div>
+        <div class="h-8 md:h-px w-px md:w-16 bg-border-color relative">
+          <div class="absolute right-[-4px] md:-right-1 bottom-[-4px] md:top-[-4px] w-2 h-2 border-r-2 border-b-2 border-border-color transform rotate-45 md:-rotate-45"></div>
+        </div>
+        <div class="px-6 py-4 bg-surface border border-border-color text-center opacity-50">
+          <span class="block text-text-muted font-mono text-xs uppercase tracking-widest mb-1">t(final)</span>
+          <strong class="text-text-muted">Reversibility Closes</strong>
+          <span class="block text-xs text-text-muted mt-1">Irrevocable State</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework Mapping Table -->
+  <section class="py-24 border-y border-border-color bg-surface">
+    <div class="max-w-container-wide mx-auto px-6">
+      <div class="mb-12">
+        <h2 class="text-3xl font-display text-text-primary mb-4">Mapping Primitives to Emerging Frameworks</h2>
+        <p class="text-text-secondary max-w-2xl">The governance activation gap is the space that emerges when these frameworks are overlaid: the residual territory where operational governance remains uninstrumented.</p>
+      </div>
+      
+      <div class="overflow-x-auto pb-4">
+        <table class="w-full text-left border-collapse min-w-[900px]">
+          <thead>
+            <tr class="border-b-2 border-warning/30 bg-ground">
+              <th class="p-4 text-warning font-display text-lg">Primitive</th>
+              <th class="p-4 text-text-primary font-medium text-sm">MI9 (2025)</th>
+              <th class="p-4 text-text-primary font-medium text-sm">Policy Cards (2025)</th>
+              <th class="p-4 text-text-primary font-medium text-sm">IMDA Framework (2026)</th>
+              <th class="p-4 text-text-primary font-medium text-sm">Microsoft AGT (2026)</th>
+              <th class="p-4 text-text-primary font-medium text-sm">OWASP Top 10</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm text-text-secondary divide-y divide-border-color bg-surface-raised">
+            <tr>
+              <td class="p-4 text-text-primary font-medium border-r border-border-color">Activation Event</td>
+              <td class="p-4">CAM, FSM engines</td>
+              <td class="p-4">Allow/deny rule execution</td>
+              <td class="p-4">Human-in-the-loop checkpoints</td>
+              <td class="p-4">Agent OS policy interception</td>
+              <td class="p-4 text-text-muted">Implicit in mitigations</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-text-primary font-medium border-r border-border-color">Intervention Efficacy</td>
+              <td class="p-4">Graduated containment</td>
+              <td class="p-4">Obligation enforcement</td>
+              <td class="p-4">Meaningful accountability</td>
+              <td class="p-4">Pre-execution enforcement</td>
+              <td class="p-4 text-text-muted">Not addressed directly</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-text-primary font-medium border-r border-border-color">Reversibility Window</td>
+              <td class="p-4 text-text-muted">Not addressed directly</td>
+              <td class="p-4 text-text-muted">Not addressed directly</td>
+              <td class="p-4">Action reversibility assessment</td>
+              <td class="p-4">Saga orchestration, rollback</td>
+              <td class="p-4 text-text-muted">Implicit</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-text-primary font-medium border-r border-border-color">Governance Latency</td>
+              <td class="p-4">Real-time telemetry</td>
+              <td class="p-4">Version-controlled updates</td>
+              <td class="p-4 text-text-muted">Not addressed directly</td>
+              <td class="p-4">Sub-millisecond enforcement</td>
+              <td class="p-4 text-text-muted">Not addressed directly</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-text-primary font-medium border-r border-border-color">Boundary Transition</td>
+              <td class="p-4">Infra-agnostic adapters</td>
+              <td class="p-4">Distributed governance mesh</td>
+              <td class="p-4">Third-party agent risk</td>
+              <td class="p-4">Agent Mesh, DID identity</td>
+              <td class="p-4">ASI07, ASI08</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Practical Shifts -->
+  <section class="py-24 bg-ground">
+    <div class="max-w-container mx-auto px-6">
+      <h2 class="text-3xl font-display text-text-primary mb-16 text-center">Three Practical Shifts for Governance Framework Design</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="relative">
+          <div class="absolute -top-8 left-0 text-7xl font-display text-warning/10 font-bold z-0">1</div>
+          <div class="relative z-10 pt-4">
+            <h3 class="text-xl font-display text-text-primary mb-4 border-b border-warning/30 pb-2 inline-block">Mechanism Existence <br/>to Activation Specification</h3>
+            <p class="text-text-muted text-sm leading-relaxed">
+              Governance frameworks should specify activation conditions explicitly: the precise trigger conditions under which each mechanism is expected to activate and the observable indicators that confirm activation occurred.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="absolute -top-8 left-0 text-7xl font-display text-warning/10 font-bold z-0">2</div>
+          <div class="relative z-10 pt-4">
+            <h3 class="text-xl font-display text-text-primary mb-4 border-b border-warning/30 pb-2 inline-block">Organizational Perimeter <br/>to Operational Surface Area</h3>
+            <p class="text-text-muted text-sm leading-relaxed">
+              Frameworks should require explicit BTE tracking and specify governance behavior at boundary crossings rather than assuming coverage terminates at organizational limits.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -top-8 left-0 text-7xl font-display text-warning/10 font-bold z-0">3</div>
+          <div class="relative z-10 pt-4">
+            <h3 class="text-xl font-display text-text-primary mb-4 border-b border-warning/30 pb-2 inline-block">Documentation Review <br/>to Causal Reconstruction</h3>
+            <p class="text-text-muted text-sm leading-relaxed">
+              Audit methodology requires activation records, intervention outcome tracking, GL and RW measurement, and saturation monitoring. Did the architecture function causally under operational conditions?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Structural Irony -->
+  <section class="py-24 border-t border-border-color bg-surface">
+    <div class="max-w-container mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <!-- Server Image Placeholder -->
+          <div class="aspect-square bg-ground border border-border-color p-4 relative overflow-hidden group rounded-md">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-raised via-ground to-ground"></div>
+            <!-- Abstract grid / servers -->
+            <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(var(--tw-colors-border-color) 1px, transparent 1px), linear-gradient(90deg, var(--tw-colors-border-color) 1px, transparent 1px); background-size: 20px 20px;"></div>
+            <div class="relative h-full flex items-center justify-center border border-warning/20 bg-warning/5 rounded-sm">
+              <span class="font-mono text-warning/50 text-sm tracking-widest uppercase">Structural Infrastructure</span>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h2 class="text-4xl font-display text-text-primary mb-6">The Structural Irony at the Heart of Agentic Governance</h2>
+          <div class="prose prose-invert prose-p:text-text-secondary prose-p:leading-relaxed">
+            <p>
+              Bainbridge (1983) observed four decades ago that the ironies of automation are structural, not incidental. Designers build systems to replace unreliable human operators, then depend on those same operators to intervene when the system fails. 
+            </p>
+            <p>
+              The governance activation gap is the institutional expression of the same irony: organizations build governance frameworks to constrain autonomous systems, then discover that the frameworks require runtime causal infrastructure that was never built.
+            </p>
+            <blockquote class="border-l-4 border-warning pl-6 py-2 my-8 bg-warning/5 text-text-primary font-display text-xl italic rounded-r-sm">
+              "A governance mechanism that does not activate under operational conditions is operationally equivalent to a governance mechanism that does not exist."
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- What Governance Must Become -->
+  <section class="py-24 bg-ground">
+    <div class="max-w-container mx-auto px-6">
+      <div class="mb-16">
+        <h2 class="text-3xl font-display text-text-primary mb-4">What Governance Must Become</h2>
+        <p class="text-text-secondary max-w-3xl">The governance challenge posed by agentic AI systems is not primarily a question of which oversight mechanisms to specify. It is a question of whether they activate, whether they matter, and whether they scale.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="p-8 border border-warning/30 bg-surface">
+          <span class="text-warning font-mono text-sm uppercase tracking-widest mb-4 block">01</span>
+          <h3 class="text-2xl font-display text-text-primary mb-3">Activation</h3>
+          <p class="text-text-muted text-sm leading-relaxed">Mechanisms must transition from passive availability to causal participation under specific operational conditions.</p>
+        </div>
+        <div class="p-8 border border-warning/30 bg-surface">
+          <span class="text-warning font-mono text-sm uppercase tracking-widest mb-4 block">02</span>
+          <h3 class="text-2xl font-display text-text-primary mb-3">Efficacy</h3>
+          <p class="text-text-muted text-sm leading-relaxed">Activation must materially alter the agent's trajectory, not merely record its divergence.</p>
+        </div>
+        <div class="p-8 border border-warning/30 bg-surface">
+          <span class="text-warning font-mono text-sm uppercase tracking-widest mb-4 block">03</span>
+          <h3 class="text-2xl font-display text-text-primary mb-3">Latency</h3>
+          <p class="text-text-muted text-sm leading-relaxed">The time required to intervene must remain strictly within the Reversibility Window of the action chain.</p>
+        </div>
+        <div class="p-8 border border-warning/30 bg-surface">
+          <span class="text-warning font-mono text-sm uppercase tracking-widest mb-4 block">04</span>
+          <h3 class="text-2xl font-display text-text-primary mb-3">Surface Area</h3>
+          <p class="text-text-muted text-sm leading-relaxed">Oversight must travel with the agent across boundaries, persisting beyond the deploying organization's perimeter.</p>
+        </div>
+      </div>
+      
+      <div class="border-t border-border-color pt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <h4 class="text-lg font-display text-text-primary mb-4">About the Author</h4>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Hillary Njuguna is an independent researcher whose work focuses on operational governance challenges in adaptive and agentic AI systems, with particular emphasis on runtime oversight, organizational risk, and cross-boundary deployment architectures.
+          </p>
+          <a href="mailto:hillarynjuguna@protonmail.com" class="inline-block mt-4 text-warning hover:text-white transition-colors text-sm">hillarynjuguna@protonmail.com</a>
+        </div>
+        <div>
+          <h4 class="text-lg font-display text-text-primary mb-4">Key References</h4>
+          <ul class="text-text-muted text-sm space-y-2">
+            <li><span class="text-text-primary">Bainbridge, L. (1983).</span> Ironies of automation.</li>
+            <li><span class="text-text-primary">Njuguna, H. (2025).</span> The Bainbridge Warning: Behavioral Layer Exposure...</li>
+            <li><span class="text-text-primary">Wang, C.L. et al. (2025).</span> MI9: An Integrated Runtime Governance Framework...</li>
+            <li><span class="text-text-primary">Mavracic, J. (2025).</span> Policy Cards: Machine-Readable Runtime Governance...</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
