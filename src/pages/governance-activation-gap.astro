@@ -1,5 +1,17 @@
 ---
 import Layout from '@/components/layout/Layout.astro';
+import PublicationPortal from '@/components/shared/PublicationPortal.astro';
+
+const apaCitation = "Njuguna, H. (2026). The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus. Working Paper, Oscillatory Fields.";
+const chicagoCitation = "Njuguna, Hillary. \"The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus.\" Working Paper. Oscillatory Fields, May 2026.";
+const bibtexCitation = `@techreport{njuguna2026governance,
+  author      = {Njuguna, Hillary},
+  title       = {The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus},
+  institution = {Oscillatory Fields},
+  type        = {Working Paper},
+  year        = {2026},
+  month       = {May}
+}`;
 ---
 
 <Layout
@@ -392,6 +404,8 @@ import Layout from '@/components/layout/Layout.astro';
         </div>
       </div>
     </div>
+  </section>
+
   <!-- What Governance Must Become -->
   <section class="py-24 bg-ground">
     <div class="max-w-container mx-auto px-6">
@@ -443,4 +457,21 @@ import Layout from '@/components/layout/Layout.astro';
       </div>
     </div>
   </section>
+
+  <PublicationPortal
+    id="activation-gap"
+    title="The Governance Activation Gap"
+    subtitle="Toward a Runtime Governance Calculus in Agentic AI Systems"
+    pdfUrl="/governance-activation-gap.pdf"
+    metadata={[
+      { label: 'Author', value: 'Hillary Njuguna' },
+      { label: 'Format', value: 'Working Paper (v6)' },
+      { label: 'Length', value: '5,425 words' },
+      { label: 'Reading Time', value: '24 minutes' },
+      { label: 'Released', value: 'May 2026' }
+    ]}
+    apaCitation={apaCitation}
+    chicagoCitation={chicagoCitation}
+    bibtexCitation={bibtexCitation}
+  />
 </Layout>
