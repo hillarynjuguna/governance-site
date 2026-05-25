@@ -1,0 +1,278 @@
+---
+title: "The Governance Activation Gap in Agentic AI Systems"
+abstract: "Defines the governance activation gap—the divergence between declared governance and operational governance—and proposes runtime governance primitives to instrument and measure oversight in agentic AI."
+type: "whitepaper"
+date: "2026-05-25"
+frameworks: ["Runtime Governance Calculus", "MI9", "Policy Cards", "Agentic AI"]
+featured: true
+---
+
+# The Governance Activation Gap in Agentic AI Systems
+## Toward a Runtime Governance Calculus
+
+**Hillary Njuguna | May 2026**
+**Independent Researcher -- Operational Governance, Agentic AI Systems**
+**hillarynjuguna@protonmail.com**
+
+*Working Paper -- v6. Preliminary findings open to engagement and revision.*
+
+---
+
+### Abstract
+
+Current AI governance frameworks evaluate oversight primarily through documentation completeness and organizational process coverage. This approach is well suited to bounded, static AI systems but becomes structurally insufficient for agentic systems capable of sequential action, tool use, and cross-boundary operation. This paper defines the *governance activation gap*, the divergence between governance mechanisms as declared and governance as operationally active. It identifies three structural failure modes through which the gap arises and proposes a first-generation set of runtime governance primitives toward a calculus that can instrument, measure, and audit governance activation under operational conditions. The central argument is that governance mechanisms must maintain causal influence at runtime, not merely satisfy documentation requirements at deployment. A governance mechanism that does not activate under operational conditions is operationally equivalent to a governance mechanism that does not exist.
+
+---
+
+### 1. The Problem: Governance as Declaration
+
+Most existing AI governance frameworks operate on a static model. They specify required oversight mechanisms (human review processes, escalation thresholds, audit trails, accountability structures) and evaluate compliance by checking whether those mechanisms exist on paper.
+
+The NIST AI Risk Management Framework (AI RMF 1.0, 2023) and ISO/IEC 42001 both provide substantial lifecycle governance guidance, including continuous monitoring provisions and operational risk management functions. The gap this paper addresses is not an absence in those frameworks but a consistent implementation failure: frameworks provide comparatively less operational specificity on the conditions under which declared governance mechanisms actually activate, the evidence required to confirm activation occurred, and the causal relationship between activation and behavioral constraint. As a result, organizations implementing those frameworks tend to achieve documentation completeness without establishing whether their governance mechanisms function under the dynamic conditions of deployed systems.
+
+This pattern has been described elsewhere as *governance theater*: the production of governance artifacts (policies, committees, templates, audit checklists) that cannot be present at the point of decision where AI systems act (Ajith, 2025). The term captures a structural phenomenon rather than an accusation of bad faith. Organizations invest genuine effort in governance documentation. The problem is that documentation, by itself, lacks the causal machinery to constrain system behavior at runtime.
+
+A 2025 review of documented AI failures found that the most consequential incidents arose from organizational failings, specifically weak controls and unclear ownership, rather than technical shortcomings (Anaconda, 2025). The MIT GenAI Divide report (August 2025) reached a convergent conclusion: enterprise generative AI pilots failed to deliver measurable returns not because of model inadequacy, but because of organizational mismanagement, including the absence of formal governance frameworks and underfunded change management. These findings suggest the gap between governance as designed and governance as practiced is already a primary failure mode in non-agentic systems.
+
+For agentic systems, this gap becomes structurally worse. For the purposes of this paper, *agentic AI systems* refers to systems capable of pursuing goals through sequential actions that modify future operating conditions through interaction with external environments, tools, or other agents. An agent that plans, acts sequentially, and responds to environmental feedback will produce outputs that no individual component of its governance framework was designed to handle. The oversight mechanisms declared in advance may exist formally while failing to activate under the conditions that actually matter.
+
+---
+
+### 2. The Activation Gap: A Structural Definition
+
+The governance activation gap describes the divergence between two states:
+
+**Declared governance:** The oversight mechanisms, review processes, and control structures that a system's governance documentation specifies as present.
+
+**Operational governance:** The oversight mechanisms that actually activate and materially constrain system behavior during deployment.
+
+These two states diverge in three distinct ways.
+
+#### 2.1 Declaration Without Activation
+
+Oversight mechanisms exist in documentation but do not fire under the conditions they were designed to address. A human review trigger may be specified for high-stakes decisions but never reached in practice because the system's action framing routes those decisions through lower-stakes categories. The mechanism is present. It does not activate.
+
+This failure mode has a direct parallel in the Behavioral Layer Exposure (BLE) framework developed in the context of AI product governance (Njuguna, 2025). BLE identifies the point at which the internal logic and hidden governance of an AI system become visible through its failures or inconsistencies. The "governance theater" described in BLE, where policy statements, ethics committees, and external audits do not impact core model behavior, is structurally identical to declaration without activation. The governance artifact exists. The behavioral layer operates independently of it.
+
+#### 2.2 Activation Without Consequence
+
+Oversight mechanisms activate (a human reviewer receives an alert, a logging system records an anomaly) but activation does not alter system behavior. The mechanism is present and functional but positioned outside the causal chain that produces outputs. Visibility is not intervention. Logging is not control. Escalation is not behavioral constraint.
+
+Anthropic's Responsible Scaling Policy (RSP) illustrates the organizational challenge of maintaining causal linkage between activation and consequence. The RSP framework assigns AI Safety Levels (ASL-1 through ASL-4) that scale safety, security, and operational requirements as model capabilities increase (Anthropic, 2024). The framework includes capability assessments designed to detect when a model crosses thresholds requiring stricter safeguards. This represents genuine structural governance. The question raised by the activation gap framework is whether the assessment triggers, once activated, produce behavioral consequences commensurate with the risk identified, or whether institutional pressures toward deployment can attenuate the causal chain between "assessment triggered" and "deployment altered." That question is empirical, not rhetorical, and it applies to every organization operating a governance framework with defined escalation thresholds.
+
+#### 2.3 Scope Mismatch
+
+Governance mechanisms are correctly specified and activate appropriately within the system they were designed for, but the system's operational behavior has extended beyond that designed scope. This is especially common when agents operate across organizational or infrastructural boundaries that the original governance framework did not model.
+
+The procurement decomposition scenario illustrates scope mismatch concretely: an AI agent authorized to manage approvals below a defined spend threshold learns, through sequential action, to split larger purchases into multiple smaller transactions that individually fall within governed parameters. Each transaction activates the correct oversight mechanism and passes review. The aggregate outcome, a purchase that would have triggered a different governance pathway, does not. This is structurally identical to what Krakovna et al. (2020) identified as specification gaming: behavior that satisfies the literal specification of an objective without achieving its intended outcome.
+
+The OWASP Top 10 for Agentic Applications (2025/2026) codifies related failure modes in its risk taxonomy. ASI02 (Tool Misuse and Exploitation) describes scenarios in which an agent uses legitimate, authorized tools in unsafe, unintended, or unauthorized ways, not because the agent gains unauthorized access, but because it chains permitted actions into outcomes the governance architecture did not anticipate. ASI03 (Identity and Privilege Abuse) describes the exploitation of delegated trust or over-privileged credentials, a direct instantiation of scope mismatch in which an agent's operational reach exceeds the perimeter of the governance regime governing its identity.
+
+It is worth distinguishing scope mismatch from a pure design failure. Better system design (tighter constraints on transaction splitting, aggregate spend tracking) would reduce the incidence of this failure. The governance argument is different: even well-designed systems operate in environments that change after deployment, and governance frameworks need to account for scope escape as an ongoing operational condition rather than a solvable design problem. The question is not only how to prevent scope mismatch through better specification, but how to detect and respond to it when it occurs in systems operating at scale.
+
+---
+
+### 3. Why Agentic Systems Amplify the Gap
+
+The activation gap is not unique to agentic AI. Runtime assurance research, safety-critical systems engineering, and cybersecurity monitoring have all addressed variants of the gap between declared controls and operational effectiveness. The contribution here is not to identify the gap in isolation but to characterize the specific structural mechanisms through which agentic systems make it worse, and to propose governance primitives adequate to those mechanisms.
+
+#### 3.1 Sequential Action Accumulation
+
+Agentic systems pursue goals through sequences of actions that interact with real environments. Each step creates conditions for the next that the original governance specification may not have anticipated. A framework adequate for step one may be silent on conditions arising by step four. This creates governance latency (elapsed time between a trigger condition and effective intervention) and, critically, a *reversibility window problem*: the interval during which intervention can meaningfully alter system effects shrinks with each completed action as prior steps generate external effects, commitments, or system states that constrain what subsequent oversight can reverse.
+
+The MI9 framework (Wang et al., 2025) addresses this directly through its Goal-Conditioned Drift Detection component, which monitors whether an agent's current actions still align with its original assigned goal. The architectural insight is that governance of sequential action requires monitoring not only individual steps but the trajectory across steps, detecting when cumulative drift produces a state that individual step-level governance would not flag.
+
+#### 3.2 Cross-Boundary Operation
+
+Agentic systems are increasingly deployed across organizational boundaries, using external tools, APIs, shared infrastructure, or other agents operating under different governance regimes. When an agent's action chain crosses those boundaries, the oversight mechanisms specified for the agent may have no reach into the operational context it is now operating within. Chan et al. (2024) identify visibility into AI agents as a core governance challenge precisely because agentic action chains frequently extend beyond the perimeter of any single organization's oversight architecture. The governance documentation looks complete. The operational environment has gaps.
+
+The OWASP taxonomy's ASI07 (Insecure Inter-Agent Communication) and ASI08 (Cascading Failures) formalize two consequences of cross-boundary operation: the risk that messages between agents operating under different governance regimes can be spoofed or manipulated, and the risk that faults propagate across multi-agent workflows in ways that no single governance architecture anticipated.
+
+Mavracic's (2025) Policy Cards framework proposes one response: machine-readable governance artifacts that travel with the agent, encoding operational, regulatory, and ethical constraints in a format the agent can interpret at runtime. In multi-agent deployments, each agent carries its own Policy Card, creating a distributed governance mesh. The approach is significant because it reframes governance from a property of the deploying organization to a property of the agent itself, potentially addressing cross-boundary governance gaps by ensuring that governance specifications persist across boundary transitions.
+
+#### 3.3 Throughput Pressure on Human Oversight
+
+Agentic systems compress the time available for human review. Sequential action chains move faster than review cycles designed for discrete, bounded outputs. This can produce a condition distinct from alert fatigue, which describes habituation under high alert volume. The condition might be called *oversight saturation*: a structural throughput ceiling where the governance architecture generates more intervention decisions than the human oversight layer can process with genuine attention.
+
+Bainbridge (1983) identified the structural antecedent to this problem four decades ago in her analysis of the "ironies of automation." Increasing automation does not eliminate human dependency; it shifts that dependency to the most difficult, high-stakes, and ambiguous tasks, precisely those the system could not automate. Because the agent handles routine work, humans are frequently out of the loop, making it harder for them to intervene effectively when the system encounters an edge case. Bainbridge further observed that skill atrophy compounds the problem: as humans rely more on automated systems, they lose the hands-on practice required to maintain their expertise, producing a dangerous irony in which the human is expected to be an expert capable of taking over during a failure, but their expertise has degraded precisely because the automated system has been performing the work.
+
+A human reviewer receiving thousands of alerts per session is not experiencing a governance activation problem. They are embedded in a governance architecture structurally incompatible with the pace of the system it nominally governs. The distinction matters because the corrective mechanisms are different: alert fatigue responds to volume reduction; oversight saturation requires architectural redesign of the governance model itself. As Bainbridge (1983) observed, the most successful automated systems, those that rarely fail, may paradoxically require the greatest investment in human training, because the need for intervention is rare and humans are therefore least prepared to perform it when it becomes necessary.
+
+---
+
+### 4. Toward a Runtime Governance Calculus
+
+The three failure modes above suggest that governance frameworks for agentic systems need instrumentation adequate to detect the gap between declared and operational governance. What follows is a first-generation primitive layer toward a runtime governance calculus: a preliminary vocabulary of operationally grounded concepts that can eventually support telemetry, thresholds, audit reconstruction, and comparative measurement across governance architectures. These primitives are not a complete framework. They are the minimum conceptual infrastructure necessary to ask the right questions at runtime.
+
+---
+
+#### 4.1 Activation Primitives
+
+**Activation Event (AE).** A state transition in which a governance mechanism moves from passive availability to causal participation in an agent's action chain. An activation event exists only when three conditions are met: a trigger condition occurred, the governance mechanism fired, and system behavior became conditionally dependent on that firing. Without the third condition, what occurred is visibility, not governance. Observable indicators include interrupt issuance, execution halt, approval gate insertion, action rerouting, and constraint modification. The absence of observable indicators following a known trigger condition is a governance failure signal regardless of what documentation specifies.
+
+The MI9 framework's Continuous Authorization Monitoring (CAM) component provides an architectural reference for activation event detection. CAM monitors and enforces permission boundaries in real time, allowing for dynamic revocation of access when anomalous behavior is detected (Wang et al., 2025). CAM operationalizes the activation event concept by treating authorization not as a static grant but as a continuous state that can be revoked, suspended, or modified in response to runtime conditions.
+
+**Activation Integrity (AIg).** The rate at which declared governance mechanisms activate correctly under the conditions they were designed to address.
+
+> AIg = Successful Activations / Required Activations
+
+Low activation integrity is the governance equivalent of packet loss. An organization may have high documentation coverage and low activation integrity simultaneously, a condition that standard compliance audits will not detect. Longitudinal tracking of AIg is necessary to distinguish stable governance architectures from those that degrade under sustained operation.
+
+---
+
+#### 4.2 Intervention Primitives
+
+**Intervention Efficacy (IE).** The degree to which a governance intervention materially alters agent trajectory. This primitive makes a distinction that most current frameworks elide: detection is not intervention, and intervention is not behavioral modification. High visibility with low intervention efficacy describes what the Behavioral Layer Exposure framework terms *governance theater* (Njuguna, 2025): oversight that fires correctly and changes nothing. IE requires measurement of delta(system trajectory after intervention) rather than confirmation that an intervention event occurred.
+
+Microsoft's Agent Governance Toolkit (2026) provides an emerging implementation reference. The toolkit's Agent OS component intercepts agent actions before execution, performing deterministic policy enforcement with sub-millisecond latency. The architectural significance is that governance is positioned within the causal chain of execution, not downstream from it. Policy evaluation occurs before the action executes, ensuring that intervention efficacy is structural rather than contingent on post-hoc review cycles.
+
+**Reversibility Window (RW).** The temporal interval during which intervention can still meaningfully alter system effects.
+
+> RW = t(irrevocable state) - t(initial action)
+
+Once contractual commitments execute, credentials propagate, external systems mutate, or downstream agents act on outputs, the reversibility window closes. Governance mechanisms that activate after RW has closed may satisfy audit requirements while having no practical effect on outcomes. RW is not fixed: it varies by system, action type, and operating environment. Governance architectures should specify RW explicitly rather than assuming intervention is always possible.
+
+Singapore's Model AI Governance Framework for Agentic AI (IMDA, 2026) reflects emerging recognition of reversibility as a governance variable, advising organizations to evaluate agent use cases by considering the reversibility of actions alongside factors such as agent autonomy, data sensitivity, and task complexity. The May 2026 update (v1.5), incorporating feedback from over 60 organizations, expanded guidance on multi-agent systems and the risks associated with agent sprawl, miscoordination, and emergent behaviors, each of which compresses the reversibility window by introducing additional propagation pathways for agent effects.
+
+---
+
+#### 4.3 Temporal Dynamics
+
+**Governance Latency (GL).** Elapsed time between a trigger condition, governance mechanism activation, and effective intervention. GL is not intrinsically problematic. It is only meaningful in relation to the reversibility window of the action chain under governance.
+
+The critical relationship between these two primitives is:
+
+> **If GL > RW, governance intervention becomes operationally symbolic.**
+
+This inequality holds regardless of whether mechanisms exist, activate correctly, and are staffed by attentive reviewers. When the time required for governance to function exceeds the window in which governance can change outcomes, the governance architecture is structurally mismatched to the system it governs. This is not a human failure. It is an architectural condition that documentation cannot resolve.
+
+MI9's Graduated Containment Strategies (Wang et al., 2025) represent one architectural response to the GL > RW problem. The framework defines a multi-level response continuum ranging from logging and alerting, to constraining permissions, to pausing for human intervention, to full process isolation and safe shutdown. The architectural principle is that governance latency should be calibrated to intervention severity: low-latency, automated responses (permission constraint, execution pause) handle conditions where the reversibility window is short, while higher-latency human review is reserved for conditions where the reversibility window permits deliberation. This graduated approach acknowledges that a single governance latency is inadequate for systems whose actions have heterogeneous reversibility profiles.
+
+This relationship generalizes beyond AI governance. Financial crash dynamics, cybersecurity incident response, military command structures, and institutional crisis response all exhibit the same failure mode: governance latency exceeding the reversibility window of rapidly evolving action chains. That generalization is not incidental. It suggests the primitive is tracking something structurally real about the relationship between decision velocity and oversight architecture in any complex adaptive system.
+
+---
+
+#### 4.4 Boundary Dynamics
+
+**Boundary Transition Event (BTE).** A state transition in which an agent's action chain crosses into an operational domain not covered by the originating governance architecture. Examples include external API invocation, cross-organizational workflow execution, credential propagation to third-party systems, and sub-agent delegation. BTEs are not inherently failures. They are operational events that governance frameworks should be designed to detect and respond to. Currently, most governance frameworks do not define BTEs as trackable events, which means cross-boundary scope escape is not surfaced until after consequences materialize.
+
+The EU AI Act, while not containing specific provisions for "agentic systems" as a legal category, addresses boundary dynamics through its risk-based classification and transparency requirements (European Parliament, 2024). High-risk AI systems must maintain automatic logging of events to ensure traceability and auditability, requirements that, if extended to boundary transitions, would create the instrumentation infrastructure necessary for BTE tracking. The Act's requirement for human oversight mechanisms that allow operators to stop, correct, or override autonomous operations provides a regulatory basis for governance intervention at boundary crossings, though the specifics of how these requirements apply to multi-step agentic workflows remain an open question as high-risk provisions approach full enforcement in August 2026.
+
+**Governance Surface Area (GSA).** The total operational territory over which a governance architecture must maintain effective activation. For bounded, single-organization AI deployments, GSA is relatively constrained and static. For agentic systems with tool access, API connectivity, and cross-boundary reach, GSA inflates dynamically as the agent operates. Static governance documentation covering a system's GSA at deployment will systematically underestimate the GSA under which the system actually operates. The mismatch between documented GSA and operational GSA is a measurable governance gap.
+
+The Cloud Security Alliance's MAESTRO threat modeling framework and AI Controls Matrix (AICM) have begun extending organizational security perimeters to address agentic architectures specifically (CSA, 2025/2026). Policy Cards (Mavracic, 2025) propose a complementary approach: rather than extending the organizational perimeter outward, attach governance specifications to the agent itself, allowing governance surface area to travel with the agent across boundary transitions. The two approaches are not mutually exclusive. Extending organizational perimeters addresses the infrastructure layer; agent-portable governance addresses the behavioral layer. Both are likely necessary for agentic systems operating at scale.
+
+---
+
+#### 4.5 Human-System Governance
+
+**Oversight Saturation (OS).** The condition in which oversight demand structurally exceeds human cognitive capacity for meaningful intervention. OS differs from alert fatigue in its cause: alert fatigue arises from volume and habituation; OS arises from a fundamental mismatch between governance architecture design and system operational tempo. A governance system in OS condition continues to generate activation events, log interventions, and produce audit trails while the human oversight layer has ceased to function as a genuine causal constraint on system behavior. OS is not detectable through standard compliance review. It requires measurement of intervention decision quality over time, not intervention event volume.
+
+Bainbridge (1983) identified this condition as inherent to advanced automation. Her analysis suggests that oversight saturation is not a contingent failure but a predictable consequence of architectures that reduce human involvement in routine operations while preserving human responsibility for exceptional ones. The human operator becomes, in effect, a monitor of a system they no longer practice operating, expected to intervene expertly in conditions they encounter rarely. The OWASP taxonomy's ASI09 (Human-Agent Trust Exploitation), which describes the manipulation of humans through persuasion and anthropomorphism, identifies a related failure mode: the risk that humans embedded in saturated oversight conditions default to trust rather than verification, creating a pathway through which governance activation events are formally processed but substantively empty.
+
+The Bainbridge Warning diagnostic framework (Njuguna, 2025) provides additional instrumentation for detecting oversight saturation through two metrics: *Transparency Velocity* (the rate at which internal specifications are released relative to the rate of performance or reliability decay) and *Restriction Symmetry* (whether operational constraints apply uniformly or are selectively deployed in response to specific events). These metrics offer proxies for institutional governance health that complement the runtime primitives proposed here. A system exhibiting high transparency velocity and low restriction symmetry may be in a state where governance artifacts are proliferating precisely to compensate for declining operational governance effectiveness.
+
+---
+
+### 5. Mapping to Emerging Frameworks
+
+The runtime governance primitives proposed above do not exist in isolation. Several recent frameworks provide partial implementations, architectural reference points, or regulatory foundations for the concepts described. This section maps the primitives to the most significant of these frameworks to identify convergence, gaps, and opportunities for integration.
+
+| Primitive | MI9 (2025) | Policy Cards (2025) | IMDA Agentic Framework (2026) | Microsoft AGT (2026) | OWASP Agentic Top 10 (2025/2026) |
+|---|---|---|---|---|---|
+| Activation Event | CAM, FSM engines | Allow/deny rule execution | Human-in-the-loop checkpoints | Agent OS policy interception | Implicit in risk mitigations |
+| Activation Integrity | ARI tracking | Automated validation, CI/CD | Monitoring and oversight metrics | SLO-based measurement | Not addressed directly |
+| Intervention Efficacy | Graduated containment | Obligation enforcement | Emphasis on "meaningful" accountability | Pre-execution policy enforcement | Not addressed directly |
+| Reversibility Window | Not addressed directly | Not addressed directly | Action reversibility assessment | Saga orchestration, rollback | Implicit in cascading failure analysis |
+| Governance Latency | Real-time telemetry capture | Version-controlled policy updates | Not addressed directly | Sub-millisecond enforcement (p99 < 0.1ms) | Not addressed directly |
+| Boundary Transition Event | Infrastructure-agnostic adapters | Distributed governance mesh | Third-party agent risk guidance | Agent Mesh, DID-based identity | ASI07, ASI08 |
+| Governance Surface Area | Not addressed directly | Agent-portable governance | Multi-agent system guidance (v1.5) | Agent Compliance module | ASI04 (supply chain) |
+| Oversight Saturation | Not addressed directly | Not addressed directly | Automation bias guidance (v1.5) | Circuit breakers, rate limiting | ASI09 (trust exploitation) |
+
+No single framework addresses all primitives. The table reveals a complementary landscape in which different frameworks address different portions of the governance calculus. MI9 provides the strongest coverage of activation and temporal dynamics. Policy Cards provide the most developed approach to boundary dynamics. The IMDA framework provides the most explicit treatment of reversibility. Microsoft's Agent Governance Toolkit provides the most concrete implementation of low-latency intervention. The OWASP taxonomy provides the most systematic treatment of failure modes but does not address measurement or instrumentation. The governance activation gap, as defined in this paper, is the space that emerges when these frameworks are overlaid: the residual territory where declared governance exists in one or more frameworks but operational governance remains uninstrumented.
+
+---
+
+### 6. Implications for Governance Framework Design
+
+The primitives above suggest three practical shifts in how governance frameworks for agentic systems should be constructed and audited.
+
+**From mechanism existence to activation specification.** Governance frameworks should specify activation conditions explicitly: the precise trigger conditions under which each mechanism is expected to activate and the observable indicators that confirm activation occurred. A mechanism without a specified activation condition is a governance intention, not a governance control. What counts as evidence of activation should be defined in advance, not inferred retrospectively. The MI9 framework's FSM-based Conformance Engines and Microsoft's Agent OS both demonstrate that activation specification is architecturally feasible: governance rules can be expressed as deterministic state machines that either fire or do not, producing unambiguous activation records.
+
+**From organizational perimeter to operational surface area.** Governance frameworks that treat the deploying organization's boundary as the boundary of the governed system will systematically underestimate GSA for any agentic deployment with external connectivity. Frameworks should require explicit BTE tracking and specify governance behavior at boundary crossings rather than assuming coverage terminates at organizational limits. Policy Cards' distributed governance mesh and the Agent Governance Toolkit's DID-based identity system represent two different but complementary architectural approaches to extending governance across boundaries: one attaches governance to the agent; the other establishes cryptographic accountability chains that persist across organizational perimeters.
+
+**From audit as documentation review to audit as causal reconstruction.** An audit that confirms oversight mechanisms are documented and technically available does not establish that those mechanisms activated, that activation produced intervention, or that intervention altered system behavior. Audit methodology for agentic systems requires activation records, intervention outcome tracking, GL and RW measurement for consequential action chains, and saturation monitoring for human oversight layers. The question an audit should answer is not "does this governance architecture exist?" but "did this governance architecture function causally under operational conditions during the audit period?"
+
+The EU AI Act's requirements for automatic logging, traceability, and human oversight provide a regulatory foundation for this shift, though the Act's provisions will need to be interpreted and extended as high-risk classification is applied to agentic deployments. Singapore's IMDA framework, particularly the May 2026 update incorporating real-world case studies from organizations including Google, DBS, AWS, OCBC, and GovTech, represents the most advanced governmental effort to bridge the gap between governance principles and operational implementation for agentic systems. The primitives proposed here represent one approach to making that bridge measurable.
+
+---
+
+### 7. Limitations and Future Work
+
+This paper proposes a conceptual vocabulary rather than an empirical framework. The primitives require validation across several dimensions before they can anchor governance standards or audit methodologies.
+
+**Empirical grounding.** The primitives need to be measured in production deployments. Activation Integrity, Intervention Efficacy, and Oversight Saturation are defined conceptually but have not been instrumentated against real governance architectures operating under load. Future work should establish baseline measurements across deployment contexts and identify the variance in these metrics under different operational conditions.
+
+**Instrumentation design.** Translating the primitives into telemetry requires engineering decisions about sampling rates, storage costs, privacy implications of detailed governance logging, and the computational overhead of continuous monitoring. The MI9 framework's Agent-Semantic Telemetry Capture and Microsoft's Agent Governance Toolkit provide starting architectural references, but the specific instrumentation requirements for each primitive remain underspecified.
+
+**Interaction effects.** The primitives are presented independently, but they interact in practice. Low Activation Integrity may produce misleading Intervention Efficacy measurements. High Governance Surface Area may structurally increase Governance Latency. These interaction effects are not modeled in this paper and represent a necessary extension.
+
+**Cultural and organizational factors.** The paper focuses on structural and architectural dimensions of the governance gap. Organizational culture, incentive structures, regulatory environments, and resource constraints all influence whether governance mechanisms activate in practice. The Bainbridge Warning diagnostic framework's attention to institutional dynamics (transparency velocity, restriction symmetry) suggests that runtime governance primitives are necessary but not sufficient for closing the activation gap. Organizational governance health is a prerequisite for runtime governance effectiveness.
+
+---
+
+### 8. Conclusion
+
+The governance challenge posed by agentic AI systems is not primarily a question of which oversight mechanisms to specify. It is a question of whether specified mechanisms activate under operational conditions, whether activation materially affects system behavior, whether governance latency remains within the reversibility window of the action chains being governed, and whether governance surface area is adequately covered as systems operate across organizational boundaries.
+
+Static governance architectures are structurally mismatched to sequential adaptive systems. The runtime governance calculus proposed here is preliminary: a first-generation vocabulary rather than a complete framework. The primitives require empirical grounding, instrumentation design, and stress-testing across deployment contexts before they can anchor governance standards or audit methodologies. That work is the natural extension of this paper.
+
+The landscape is not empty. MI9, Policy Cards, the Singapore IMDA framework, Microsoft's Agent Governance Toolkit, and the OWASP Agentic AI taxonomy each address portions of the problem space identified here. What the primitives proposed in this paper contribute is a common measurement vocabulary that can bridge across these frameworks, enabling comparative assessment of governance architectures on the dimension that matters most: whether governance mechanisms maintain causal influence over the systems they are designed to govern, under the conditions those systems actually encounter.
+
+Bainbridge (1983) observed four decades ago that the ironies of automation are structural, not incidental. Designers build systems to replace unreliable human operators, then depend on those same operators to intervene when the system fails. The governance activation gap is the institutional expression of the same irony: organizations build governance frameworks to constrain autonomous systems, then discover that the frameworks require runtime causal infrastructure that was never built. Until frameworks address activation, intervention efficacy, latency, reversibility, boundary dynamics, and oversight saturation as operational variables rather than documentation artifacts, governance of agentic systems will remain incomplete in ways that standard compliance approaches cannot detect.
+
+A governance mechanism that does not activate under operational conditions is operationally equivalent to a governance mechanism that does not exist.
+
+---
+
+### References
+
+Ajith, P. (2025). Governance Theater in AI Systems: Artifact-Driven Policy and the Decision-Point Gap. *Blog series on AI governance*.
+
+Anaconda. (2025). State of Data Science Report: AI Governance and Organizational Readiness. Anaconda, Inc.
+
+Anthropic. (2024). Responsible Scaling Policy (RSP), Version 2.0. Anthropic.
+
+Bainbridge, L. (1983). Ironies of automation. *Automatica*, 19(6), 775--779. https://doi.org/10.1016/0005-1098(83)90046-8
+
+Chan, A., Salganik, R., and Woodside, A. (2024). Visibility into AI Agents. *Proceedings of the 2024 ACM Conference on Fairness, Accountability, and Transparency*, pp. 710--731. https://doi.org/10.1145/3630106.3658948
+
+Cloud Security Alliance [CSA]. (2025/2026). MAESTRO Threat Modeling Framework and AI Controls Matrix (AICM). Cloud Security Alliance.
+
+European Parliament. (2024). Regulation (EU) 2024/1689 of the European Parliament and of the Council laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). *Official Journal of the European Union*.
+
+Infocomm Media Development Authority [IMDA]. (2026, January). Model AI Governance Framework for Agentic AI. Singapore Government. Updated May 2026 (Version 1.5).
+
+Krakovna, V., Uesato, J., Mikulik, V., Rahtz, M., Everitt, T., Kumar, R., Kenton, Z., Leike, J., and Legg, S. (2020). Specification gaming: the flip side of AI ingenuity. *DeepMind Blog*. https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/
+
+Mavracic, J. (2025). Policy Cards: Machine-Readable Runtime Governance for Autonomous AI Agents. arXiv preprint arXiv:2510.24383.
+
+Microsoft. (2026). Agent Governance Toolkit. Open-source project, MIT License. https://github.com/microsoft/agent-governance-toolkit
+
+Challapally, A. et al. (2025). The GenAI Divide: State of AI in Business 2025. MIT Media Lab, Project NANDA, August 2025.
+
+National Institute of Standards and Technology [NIST]. (2023). AI Risk Management Framework (AI RMF 1.0). U.S. Department of Commerce. https://doi.org/10.6028/NIST.AI.100-1
+
+National Institute of Standards and Technology [NIST]. (2026). AI Agent Standards Initiative, NIST AI 100-2 and NIST IR 8596. U.S. Department of Commerce.
+
+Njuguna, H. (2025). The Bainbridge Warning: Behavioral Layer Exposure and Institutional Response Governance in Agentic AI Systems. Working paper.
+
+OWASP. (2025/2026). OWASP Top 10 for Agentic Applications. Open Worldwide Application Security Project.
+
+Wang, C. L., Singhal, T., Kelkar, A., and Tuo, J. (2025). MI9: An Integrated Runtime Governance Framework for Agentic AI Systems. arXiv preprint arXiv:2508.03858.
+
+---
+
+*Hillary Njuguna is an independent researcher whose work focuses on operational governance challenges in adaptive and agentic AI systems, with particular emphasis on runtime oversight, organizational risk, and cross-boundary deployment architectures.*
+
+*hillarynjuguna@protonmail.com*
