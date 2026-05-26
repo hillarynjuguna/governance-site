@@ -102,3 +102,18 @@ export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
     }))
   };
 }
+
+export function getDefinedTermSchema(name: string, description: string, urlPath: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    'name': name,
+    'description': description,
+    'url': `${SITE_URL}${urlPath}`,
+    'inDefinedTermSet': {
+      '@type': 'DefinedTermSet',
+      'name': 'Oscillatory Fields Governance Glossary',
+      'url': `${SITE_URL}/glossary`
+    }
+  };
+}

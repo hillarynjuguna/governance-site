@@ -1,0 +1,180 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { glossaryTerms, getTermBySlug } from '../data/glossary';
+import { getBreadcrumbSchema, getDefinedTermSchema } from '../utils/structured-data';
+
+// Tool pages that have dedicated routes (for cross-linking)
+const toolRoutes: Record<string, string> = {
+  'cir-diagnostic-engine': '/cir-diagnostic-engine',
+  'bainbridge-warning': '/bainbridge-warning',
+  'rsps-architecture': '/rsps-architecture',
+  'ce-ledger': '/ce-ledger',
+  'delta-instrument': '/delta-instrument',
+  'sovereign-types': '/sovereign-types',
+  'martha-course': '/martha-course',
+  'premise': '/premise',
+  'oscillatory-fields': '/',
+};
+
+function getLinkForSlug(slug: string): string {
+  if (toolRoutes[slug]) return toolRoutes[slug];
+  return `/glossary#${slug}`;
+}
+
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: 'Home', urlPath: '/' },
+  { name: 'Glossary', urlPath: '/glossary' }
+]);
+
+const definedTermSchemas = glossaryTerms.map(term =>
+  getDefinedTermSchema(term.name, term.definition, `/glossary#${term.slug}`)
+);
+
+const schemas = [breadcrumbSchema, ...definedTermSchemas];
+---
+
+<Layout
+  title="Governance Glossary"
+  description="Authoritative definitions for every term in the Oscillatory Fields AI governance ecosystem — from CIR to Sovereign Types to the Bainbridge Warning."
+  canonical="/glossary"
+  schemas={schemas}
+>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Glossary</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Reference Layer / Knowledge Graph
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        Governance Glossary
+      </h1>
+      <p class="text-text-secondary mt-4 max-w-2xl text-base leading-relaxed font-body">
+        Every term in the Oscillatory Fields ecosystem, defined precisely. Terms cross-link to related concepts and tool pages — this is a connected knowledge graph, not a dictionary.
+      </p>
+      <!-- Jump links -->
+      <div class="flex flex-wrap gap-2 mt-6">
+        {glossaryTerms.map(term => (
+          <a
+            href={`#${term.slug}`}
+            class="font-mono text-xs px-2 py-1 border border-border-subtle text-text-secondary hover:border-amber-600 hover:text-amber-500 transition-colors rounded"
+          >
+            {term.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms -->
+  <section class="border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      {glossaryTerms.map((term, i) => {
+        const relatedTerms = term.relatedSlugs.map(s => getTermBySlug(s)).filter(Boolean);
+        return (
+          <article
+            id={term.slug}
+            class={`py-16 ${i < glossaryTerms.length - 1 ? 'border-b border-border-subtle' : ''}`}
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+              <!-- Term name column -->
+              <div class="lg:col-span-1">
+                <span class="font-mono text-xs text-amber-600 uppercase tracking-widest block mb-2">
+                  Term {String(i + 1).padStart(2, '0')}
+                </span>
+                <h2 class="font-display text-2xl text-text-primary leading-tight">
+                  {term.name}
+                </h2>
+                <!-- Tool page link if available -->
+                {toolRoutes[term.slug] && (
+                  <a
+                    href={toolRoutes[term.slug]}
+                    class="inline-flex items-center gap-1 mt-3 font-mono text-xs text-accent hover:text-amber-500 transition-colors"
+                  >
+                    View tool page &rarr;
+                  </a>
+                )}
+              </div>
+
+              <!-- Content column -->
+              <div class="lg:col-span-3 space-y-6">
+                <!-- Tagline -->
+                <div class="p-4 border-l-2 border-amber-600 bg-surface rounded-r-md">
+                  <p class="font-body text-sm text-text-primary font-medium leading-relaxed">
+                    {term.tagline}
+                  </p>
+                </div>
+
+                <!-- One-sentence definition -->
+                <p class="font-body text-base text-text-secondary leading-relaxed font-semibold">
+                  {term.definition}
+                </p>
+
+                <!-- Full explanation -->
+                <div class="space-y-4">
+                  {term.explanationParagraphs.map(para => (
+                    <p class="font-body text-sm text-text-secondary leading-relaxed">
+                      {para}
+                    </p>
+                  ))}
+                </div>
+
+                <!-- Related terms cross-links -->
+                {relatedTerms.length > 0 && (
+                  <div class="pt-4 border-t border-border-subtle">
+                    <span class="font-mono text-xs text-text-muted uppercase tracking-widest block mb-3">
+                      Related concepts
+                    </span>
+                    <div class="flex flex-wrap gap-2">
+                      {relatedTerms.map(related => related && (
+                        <a
+                          href={getLinkForSlug(related.slug)}
+                          class="inline-flex items-center gap-1 px-3 py-1 border border-border-subtle text-xs font-mono text-accent hover:border-amber-600 hover:text-amber-500 transition-colors rounded"
+                        >
+                          {related.name} &rarr;
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="py-16 border-t border-border-subtle bg-surface">
+    <div class="mx-auto max-w-container px-6 text-center">
+      <p class="font-body text-sm text-text-secondary mb-6">
+        These terms are put into practice in our diagnostic case studies.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="/cir-diagnostic-engine"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-text-inverse font-mono text-xs uppercase tracking-widest hover:bg-amber-500 transition-colors"
+        >
+          Run a Diagnostic &rarr;
+        </a>
+        <a
+          href="/case-studies/multi-agent-deployment-audit"
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-border-subtle text-text-secondary font-mono text-xs uppercase tracking-widest hover:border-amber-600 hover:text-amber-500 transition-colors"
+        >
+          Read Case Studies &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

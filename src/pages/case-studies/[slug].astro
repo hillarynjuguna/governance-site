@@ -1,0 +1,285 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { caseStudies, getCaseStudyBySlug } from '../../data/case-studies';
+import { getArticleSchema, getBreadcrumbSchema } from '../../utils/structured-data';
+import { getTermBySlug } from '../../data/glossary';
+
+export function getStaticPaths() {
+  return caseStudies.map(cs => ({
+    params: { slug: cs.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const study = getCaseStudyBySlug(slug);
+
+if (!study) {
+  return Astro.redirect('/404');
+}
+
+const toolTerm = getTermBySlug(study.toolSlug);
+
+const scoreColor = {
+  'Present': 'text-emerald-400',
+  'Partially Present': 'text-amber-500',
+  'Absent': 'text-red-400',
+} as const;
+
+const scoreBg = {
+  'Present': 'border-emerald-400/30 bg-emerald-400/5',
+  'Partially Present': 'border-amber-500/30 bg-amber-500/5',
+  'Absent': 'border-red-400/30 bg-red-400/5',
+} as const;
+
+const articleSchema = getArticleSchema(
+  study.title,
+  study.subtitle,
+  `/case-studies/${study.slug}`,
+  study.datePublished
+);
+
+// Extend with citation and about
+const fullArticleSchema = {
+  ...articleSchema,
+  'about': {
+    '@type': 'SoftwareApplication',
+    'name': study.toolUsed,
+    'url': `https://governance-site.vercel.app/${study.toolSlug}`
+  },
+  'citation': study.externalReferences.map(ref => ({
+    '@type': 'CreativeWork',
+    'name': ref.label,
+    'url': ref.url
+  }))
+};
+
+const breadcrumbSchema = getBreadcrumbSchema([
+  { name: 'Home', urlPath: '/' },
+  { name: 'Case Studies', urlPath: '/case-studies/multi-agent-deployment-audit' },
+  { name: study.title, urlPath: `/case-studies/${study.slug}` }
+]);
+
+const schemas = [fullArticleSchema, breadcrumbSchema];
+---
+
+<Layout
+  title={study.title}
+  description={study.subtitle}
+  canonical={`/case-studies/${study.slug}`}
+  schemas={schemas}
+>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary flex-wrap">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-muted">Case Studies</span>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">{study.title}</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-amber-600 uppercase tracking-widest">Case Study</span>
+        <span class="text-text-muted font-mono text-xs">/</span>
+        <a href={`/${study.toolSlug}`} class="font-mono text-xs text-accent hover:text-amber-500 transition-colors">
+          {study.toolUsed}
+        </a>
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary leading-tight">
+        {study.title}
+      </h1>
+      <p class="text-text-secondary mt-4 max-w-2xl text-lg leading-relaxed font-body">
+        {study.subtitle}
+      </p>
+      <div class="flex flex-wrap items-center gap-4 mt-6 text-xs font-mono text-text-muted">
+        <span>Hillary Njuguna</span>
+        <span class="text-border-subtle">|</span>
+        <time datetime={study.datePublished}>
+          {new Date(study.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="text-border-subtle">|</span>
+        <span class="text-amber-600">{study.toolUsed}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-container px-6 pb-24 space-y-0">
+
+    <!-- Problem -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div>
+          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">01 / Problem</span>
+        </div>
+        <div class="lg:col-span-3">
+          <p class="font-body text-lg text-text-primary leading-relaxed font-semibold">
+            {study.problem}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Context -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div>
+          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">02 / Architecture</span>
+        </div>
+        <div class="lg:col-span-3">
+          <p class="font-body text-sm text-text-secondary leading-relaxed">
+            {study.architectureContext}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diagnostic Findings -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div>
+          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">03 / Findings</span>
+        </div>
+        <div class="lg:col-span-3 space-y-4">
+          <p class="font-body text-sm text-text-muted mb-6">
+            CIR scored the system against four constitutional governance primitives. Each primitive returns a deterministic verdict: Present, Partially Present, or Absent.
+          </p>
+          {study.diagnosticFindings.map((finding, i) => (
+            <div class={`p-5 border rounded-lg ${scoreBg[finding.score]}`}>
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-xs text-text-muted">0{i+1}</span>
+                  <h3 class="font-body text-sm font-semibold text-text-primary">
+                    {finding.primitive}
+                  </h3>
+                </div>
+                <span class={`font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap ${scoreColor[finding.score]}`}>
+                  {finding.score}
+                </span>
+              </div>
+              <p class="font-body text-sm text-text-secondary leading-relaxed">
+                {finding.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Remediation -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div>
+          <span class="font-mono text-xs text-text-muted uppercase tracking-widest">04 / Remediation</span>
+        </div>
+        <div class="lg:col-span-3">
+          <p class="font-body text-sm text-text-secondary leading-relaxed">
+            {study.remediationPath}
+          </p>
+          <a
+            href="/cir-diagnostic-engine"
+            class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-amber-600 text-text-inverse font-mono text-xs uppercase tracking-widest hover:bg-amber-500 transition-colors"
+          >
+            Run this diagnostic on your architecture &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- E-E-A-T / External Standards -->
+    {(study.eeatSignals.nistMapping || study.eeatSignals.euAiActMapping || study.eeatSignals.isoMapping) && (
+      <section class="py-12 border-t border-border-subtle">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div>
+            <span class="font-mono text-xs text-text-muted uppercase tracking-widest">05 / Framework Mapping</span>
+          </div>
+          <div class="lg:col-span-3 space-y-4">
+            {study.eeatSignals.nistMapping && (
+              <div class="p-4 border border-border-subtle rounded-md">
+                <span class="font-mono text-xs text-accent uppercase block mb-2">NIST AI RMF</span>
+                <p class="font-body text-sm text-text-secondary leading-relaxed">{study.eeatSignals.nistMapping}</p>
+              </div>
+            )}
+            {study.eeatSignals.euAiActMapping && (
+              <div class="p-4 border border-border-subtle rounded-md">
+                <span class="font-mono text-xs text-accent uppercase block mb-2">EU AI Act</span>
+                <p class="font-body text-sm text-text-secondary leading-relaxed">{study.eeatSignals.euAiActMapping}</p>
+              </div>
+            )}
+            {study.eeatSignals.isoMapping && (
+              <div class="p-4 border border-border-subtle rounded-md">
+                <span class="font-mono text-xs text-accent uppercase block mb-2">ISO/IEC 42001:2023</span>
+                <p class="font-body text-sm text-text-secondary leading-relaxed">{study.eeatSignals.isoMapping}</p>
+              </div>
+            )}
+            <div class="pt-2">
+              <span class="font-mono text-xs text-text-muted uppercase block mb-3">External References</span>
+              <ul class="space-y-2">
+                {study.externalReferences.map(ref => (
+                  <li>
+                    <a
+                      href={ref.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-mono text-xs text-accent hover:text-amber-500 transition-colors inline-flex items-center gap-1"
+                    >
+                      &rarr; {ref.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Limitations — the trust anchor -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div>
+          <span class="font-mono text-xs text-amber-600 uppercase tracking-widest">06 / Limitations</span>
+          <p class="font-mono text-xs text-text-muted mt-2 leading-relaxed">
+            What this diagnostic did not assess. Scope honesty is a feature, not a disclaimer.
+          </p>
+        </div>
+        <div class="lg:col-span-3 space-y-4">
+          {study.limitations.map((lim, i) => (
+            <div class="p-5 border border-amber-600/20 bg-surface rounded-lg">
+              <h3 class="font-mono text-xs text-amber-600 uppercase tracking-wider mb-2">
+                {String(i + 1).padStart(2, '0')} / {lim.heading}
+              </h3>
+              <p class="font-body text-sm text-text-secondary leading-relaxed">
+                {lim.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation between case studies -->
+    <section class="py-12 border-t border-border-subtle">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {caseStudies.filter(cs => cs.slug !== slug).map(cs => (
+          <a
+            href={`/case-studies/${cs.slug}`}
+            class="p-5 border border-border-subtle bg-surface hover:border-amber-600 transition-colors rounded-lg group"
+          >
+            <span class="font-mono text-xs text-text-muted uppercase block mb-2">Related Case Study</span>
+            <span class="font-body text-sm text-text-primary font-semibold group-hover:text-amber-500 transition-colors">
+              {cs.title}
+            </span>
+            <span class="font-mono text-xs text-accent mt-2 block">{cs.toolUsed}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>

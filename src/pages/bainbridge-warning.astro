@@ -2,6 +2,14 @@
 import Layout from '@/components/layout/Layout.astro';
 import PublicationPortal from '@/components/shared/PublicationPortal.astro';
 import { getEntry } from 'astro:content';
+import { getTermBySlug } from '../data/glossary';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const term = getTermBySlug('bainbridge-warning');
+const schemas = [
+  getBreadcrumbSchema([{ name: 'Home', urlPath: '/' }, { name: 'Bainbridge Warning', urlPath: '/bainbridge-warning' }]),
+  getTechArticleSchema('Bainbridge Warning', term?.definition ?? '', '/bainbridge-warning')
+];
 
 const warningEntry = await getEntry('core', 'bainbridge-warning');
 
@@ -22,9 +30,32 @@ const bibtexCitation = `@book{njuguna2026bainbridge,
 ---
 
 <Layout
-  title="The Bainbridge Warning | Oscillatory Fields"
+  title="The Bainbridge Warning"
   description="Executive field manual for identifying the gap between high AI capability and inadequate governance infrastructure."
+  canonical="/bainbridge-warning"
+  schemas={schemas}
 >
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-0">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Bainbridge Warning</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- In Plain English callout -->
+  {term && (
+    <div class="mx-auto max-w-container px-6 pt-6">
+      <div class="p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">{term.tagline}</p>
+      </div>
+    </div>
+  )}
+
   <!-- Back to top button -->
   <button
     id="back-to-top"

@@ -19,5 +19,25 @@ import Ticker from '@/components/home/Ticker.astro';
   <CIRFeaturedCTA />
   <ImpactStories />
   <ThoughtLeadershipStrip />
+  
+  <section class="py-16 border-t border-border-subtle bg-surface/50">
+    <div class="mx-auto max-w-container px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <span class="font-mono text-xs tracking-wider text-amber-600 uppercase block mb-2">Systems &amp; Audits</span>
+        <h2 class="font-display text-2xl sm:text-3xl text-text-primary">
+          Explore governance primitives and real-world audits.
+        </h2>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 shrink-0">
+        <a href="/glossary" class="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-border-subtle bg-surface text-sm font-medium text-text-primary hover:border-amber-600 transition-colors">
+          Explore the full governance stack &rarr;
+        </a>
+        <a href="/case-studies/multi-agent-deployment-audit" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-amber-600 text-white text-sm font-medium hover:bg-amber-500 transition-colors">
+          Read case studies &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
   <Ticker />
 </Layout>

@@ -1,11 +1,42 @@
 ---
 import Layout from '@/components/layout/Layout.astro';
+import { getTermBySlug } from '../data/glossary';
+import { getBreadcrumbSchema, getSoftwareApplicationSchema } from '../utils/structured-data';
+
+const term = getTermBySlug('cir-diagnostic-engine');
+const schemas = [
+  getBreadcrumbSchema([{ name: 'Home', urlPath: '/' }, { name: 'CIR Diagnostic Engine', urlPath: '/cir-diagnostic-engine' }]),
+  getSoftwareApplicationSchema('CIR Diagnostic Engine', term?.definition ?? '')
+];
 ---
 
 <Layout
   title="CIR Diagnostic Engine"
   description="A constitutional governance audit tool for AI deployment architectures. Evaluates systems against four canonical governance primitives."
+  canonical="/cir-diagnostic-engine"
+  schemas={schemas}
 >
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-0">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">CIR Diagnostic Engine</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- In Plain English callout -->
+  {term && (
+    <div class="mx-auto max-w-container px-6 pt-6">
+      <div class="p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">{term.tagline}</p>
+      </div>
+    </div>
+  )}
+
   <!-- Hero -->
   <section class="pt-20 pb-12">
     <div class="mx-auto max-w-container px-6">
