@@ -115,6 +115,18 @@ export const glossaryTerms: GlossaryTerm[] = [
       'We work with CTOs, VP Engineering leads, and compliance officers at organizations deploying multi-model pipelines, helping them build systems that are safe by design. Our product suite—including the CIR Engine, Bainbridge Warning, and Sovereign Types—provides the foundation for verifiable AI operations.'
     ],
     relatedSlugs: ['premise', 'cir-diagnostic-engine', 'bainbridge-warning']
+  },
+  {
+    slug: 'governance-activation-gap',
+    name: 'Governance Activation Gap',
+    tagline: 'The gap between governance that exists on paper and governance that fires at the moment a system acts.',
+    definition: 'The structural divergence between declared governance mechanisms (policies, committees, documentation) and governance that actually activates, constrains, and alters the behavior of an agentic AI system under operational conditions.',
+    explanationParagraphs: [
+      'The Governance Activation Gap identifies a failure mode that is distinct from mere non-compliance. An organization may have robust, well-documented governance policies and still exhibit a wide activation gap if those policies cannot reach the runtime moment where an AI agent takes action. The gap is measured by three failure modes: Declaration Without Activation (mechanisms exist but do not fire), Activation Without Consequence (mechanisms fire but do not alter behavior), and Scope Mismatch (mechanisms fire correctly within their designed perimeter but the agent operates beyond it).',
+      'Agentic AI systems amplify the activation gap through three structural mechanisms: Sequential Action Accumulation (each action narrows the Reversibility Window for the next), Cross-Boundary Operation (agent chains cross into contexts where originating governance has no reach), and Oversight Saturation (the action chain generates more intervention decisions than human oversight can process with genuine attention). The key diagnostic test is whether Governance Latency (GL) exceeds the Reversibility Window (RW). When GL > RW, any governance intervention becomes operationally symbolic.',
+      'The paper proposes a first-generation vocabulary of activation primitives — Activation Event, Activation Integrity, Intervention Efficacy, Reversibility Window, Governance Latency, Boundary Transition Event, and Governance Surface Area — as the foundation for a Runtime Governance Calculus. These primitives allow framework designers and auditors to specify not just what oversight mechanisms exist, but the conditions under which they activate, whether activation produces causal behavioral change, and how oversight must adapt when agent operations cross organizational and infrastructural boundaries.'
+    ],
+    relatedSlugs: ['bainbridge-warning', 'cir-diagnostic-engine', 'rsps-architecture', 'premise']
   }
 ];
 

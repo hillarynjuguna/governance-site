@@ -1,6 +1,23 @@
 ---
 import Layout from '@/components/layout/Layout.astro';
 import PublicationPortal from '@/components/shared/PublicationPortal.astro';
+import { getTermBySlug } from '../data/glossary';
+import { getBreadcrumbSchema, getArticleSchema } from '../utils/structured-data';
+
+const term = getTermBySlug('governance-activation-gap');
+
+const schemas = [
+  getBreadcrumbSchema([
+    { name: 'Home', urlPath: '/' },
+    { name: 'Governance Activation Gap', urlPath: '/governance-activation-gap' }
+  ]),
+  getArticleSchema(
+    'The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus',
+    'A working paper proposing a first-generation vocabulary of activation primitives for measuring and addressing the structural divergence between declared and operational AI governance.',
+    '/governance-activation-gap',
+    '2026-05-01'
+  )
+];
 
 const apaCitation = "Njuguna, H. (2026). The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus. Working Paper, Oscillatory Fields.";
 const chicagoCitation = "Njuguna, Hillary. \"The Governance Activation Gap in Agentic AI Systems: Toward a Runtime Governance Calculus.\" Working Paper. Oscillatory Fields, May 2026.";
@@ -17,9 +34,33 @@ const bibtexCitation = `@techreport{njuguna2026governance,
 <Layout
   title="The Governance Activation Gap | Hillary Njuguna"
   description="Toward a Runtime Governance Calculus in Agentic AI Systems."
+  canonical="/governance-activation-gap"
+  schemas={schemas}
 >
+  <!-- Breadcrumb nav -->
+  <nav class="pt-24 pb-0">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Governance Activation Gap</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- In Plain English callout -->
+  {term && (
+    <div class="mx-auto max-w-container px-6 pt-6">
+      <div class="p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">{term.tagline}</p>
+      </div>
+    </div>
+  )}
+
   <!-- Hero Section -->
-  <section class="relative pt-32 pb-24 border-b border-border-color bg-surface overflow-hidden">
+  <section class="relative pt-12 pb-24 border-b border-border-color bg-surface overflow-hidden">
+
     <!-- background effect -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/10 via-surface to-ground"></div>
     <div class="relative max-w-container mx-auto px-6 z-10">
