@@ -1,0 +1,71 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema } from '../utils/structured-data';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: '404', urlPath: '/404' }
+];
+
+const schema = getBreadcrumbSchema(breadcrumbs);
+---
+
+<Layout 
+  title="404: Route Not Verified" 
+  description="The requested route has not been verified or is not active in the current system state."
+  schemas={[schema]}
+>
+  <section class="min-h-[70vh] flex items-center justify-center py-20 px-6">
+    <div class="max-w-md w-full border border-border-color bg-surface p-8 rounded-lg shadow-xl relative overflow-hidden">
+      <!-- Accent bar -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-amber-600"></div>
+      
+      <div class="font-mono text-xs text-amber-600 mb-2 uppercase tracking-widest">
+        System Status / Error Code 404
+      </div>
+      
+      <h1 class="font-display text-3xl text-text-primary mb-4">
+        Route Not Verified
+      </h1>
+      
+      <p class="text-sm text-text-secondary leading-relaxed mb-8">
+        The system path you requested does not map to a recognized governance coordinate. The route may be deactivated, uninstantiated, or undergoing constitutional integrity checks.
+      </p>
+
+      <div class="border-t border-border-subtle pt-6 mb-8">
+        <h2 class="font-mono text-xs text-text-muted uppercase mb-4 tracking-wider">
+          Verified Entry Points
+        </h2>
+        <ul class="space-y-3 font-mono text-sm text-accent">
+          <li>
+            <a href="/" class="hover:text-amber-500 transition-colors flex items-center gap-2">
+              <span class="text-text-muted">&rarr;</span> Homepage
+            </a>
+          </li>
+          <li>
+            <a href="/cir-diagnostic-engine" class="hover:text-amber-500 transition-colors flex items-center gap-2">
+              <span class="text-text-muted">&rarr;</span> CIR Diagnostic Engine
+            </a>
+          </li>
+          <li>
+            <a href="/bainbridge-warning" class="hover:text-amber-500 transition-colors flex items-center gap-2">
+              <span class="text-text-muted">&rarr;</span> Bainbridge Warning
+            </a>
+          </li>
+          <li>
+            <a href="/premise" class="hover:text-amber-500 transition-colors flex items-center gap-2">
+              <span class="text-text-muted">&rarr;</span> Foundational Premise
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a 
+        href="/" 
+        class="inline-flex w-full items-center justify-center rounded-md bg-amber-600 px-4 py-2.5 text-sm font-semibold text-text-inverse hover:bg-amber-500 transition-colors font-mono"
+      >
+        Initialize Safe Rollback
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,113 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const title = 'Premise';
+const description = 'Theoretical primitives and foundational research driving constitutional AI governance infrastructure.';
+const canonical = '/premise';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'Premise', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema(title, description, canonical)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Premise</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Theoretical Corpus / Foundation Layer
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        Our Foundational Premise
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          The theoretical foundation — why constitutional AI governance requires infrastructure, not just policies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            Oscillatory Fields is built on a single, core thesis: high-level policies, ethical statements, and legal frameworks are necessary but insufficient for governing active AI deployments. When autonomous models are integrated into critical execution loops—handling APIs, executing code, or managing transactions—they operate too quickly and dynamically for manual human oversight. Governance must be compiled directly into the system's architecture.
+          </p>
+          <p>
+            Traditional approaches treat AI governance as an administrative overlay: a set of forms to fill out or a policy manual that sits on a shared drive. This creates "governance theater," where companies remain exposed to severe operational and systemic risks because their validation protocols are entirely divorced from the actual execution code. We advocate for a paradigm shift to "structural governance" by building runtime diagnostic tools, immutable ledgers, and strict type constraints.
+          </p>
+          <p>
+            Our research focuses on the concept of "metaphorical resonance" between human intent and machine execution. Rather than attempting to control systems through direct prompt enforcement (which is vulnerable to jailbreaks, injection attacks, and drift), we build structural boundary systems that define what a system is physically allowed to do. If an agentic system is designed with a strict reversibility gate, it cannot execute an irreversible action, regardless of how its language model is prompted.
+          </p>
+          <p>
+            By establishing these technical invariants at the foundation of the stack, we turn governance from an administrative cost into a performance multiplier. When engineers can rely on compilation-level safety boundaries, they can deploy autonomous agents with higher agency and autonomy, knowing that the system's runtime limits are structurally guaranteed.
+          </p>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Core Papers
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-accent">
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors block">
+                  &rarr; Constitutional AI Security Fabric
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors block">
+                  &rarr; Architecture of Consciousness
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors block">
+                  &rarr; Recursive Relational Intelligence
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Research Access</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              We collaborate with academic institutions, regulatory bodies, and industry labs on architectural governance standards.
+            </p>
+            <a 
+              href="mailto:research@oscillatoryfields.com?subject=Research%20Collaboration" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Contact Research Team &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

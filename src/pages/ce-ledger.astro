@@ -1,0 +1,114 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const title = 'CE-Ledger';
+const description = 'Constitutional Event Ledger for cryptographically verifiable AI decision provenance and audit trails.';
+const canonical = '/ce-ledger';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'CE-Ledger', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema(title, description, canonical)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">CE-Ledger</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Audit Registry / Layer 1: Epistemic Registry
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        CE-Ledger
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          An audit trail system for AI decision provenance — who decided what, when, and under what constraints.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            The Constitutional Event Ledger (CE-Ledger) is a persistent, tamper-evident audit log designed specifically for recording autonomous decision provenance. As agentic AI systems execute multi-step operations (such as generating code, interacting with financial layers, or classifying compliance data), standard application logs prove insufficient. CE-Ledger provides a secure, structured record of every state transition, model inference parameters, and validation outcome.
+          </p>
+          <p>
+            Operating on content-addressed storage (CAS) primitives and secure, local hash chains, CE-Ledger guarantees that once a decision state is logged, it cannot be retroactively modified or deleted. Each log entry is structured with full epistemic metadata: the model version, temperature settings, input prompt context tokens, and the precise rule verification block evaluated by the Constitutional Validation Layer.
+          </p>
+          <p>
+            This structure enables cryptographically verifiable audit trails. External auditors, compliance officers, and human operators can verify the complete lineage of any AI action, proving which guidelines were active at the exact moment of execution. This is a critical requirement for safety-critical integrations, emerging regulatory audits, and liability management.
+          </p>
+          <p>
+            CE-Ledger is built to be lightweight and scalable. It integrates seamlessly at the boundaries of execution systems, storing metadata references in a decoupled registry while preserving raw payload privacy. This ensures that governance trails do not introduce performance bottlenecks or compromise sensitive system data.
+          </p>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Technical Primitives
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-text-secondary">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Content-Addressed Storage
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Cryptographic Hash Chains
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Epistemic Metadata Schema
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Decoupled Storage Interface
+              </li>
+            </ul>
+          </div>
+
+          <!-- Register Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Technical Drafts</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Database adapters, LevelDB bindings, and schema validation specifications are available for review.
+            </p>
+            <a 
+              href="mailto:info@oscillatoryfields.com?subject=CE-Ledger%20Technical%20Inquiry" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Request Tech Docs &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

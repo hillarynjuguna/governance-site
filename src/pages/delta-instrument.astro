@@ -1,0 +1,114 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const title = 'Delta Instrument';
+const description = 'Continuous telemetry and gap measurement for tracking AI alignment and operational governance drift.';
+const canonical = '/delta-instrument';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'Delta Instrument', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema(title, description, canonical)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Delta Instrument</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Continuous Measurement / Layer 3: Operational Diagnostics
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        Delta Instrument
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          A measurement tool that quantifies governance gaps across your AI deployment surface.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            The Delta Instrument is a measurement utility designed to detect and quantify "governance drift." In production environments, model configurations, system dependencies, and user interaction patterns evolve over time. This continuous change can create invisible gaps between an organization's documented governance standards and the actual runtime behavior of its AI systems.
+          </p>
+          <p>
+            Rather than relying on periodic manual reviews, the Delta Instrument implements active telemetry probes at execution boundaries. By continuously auditing execution outputs and logging state invariants to a baseline metrics system, the Delta Instrument quantifies the distance—the delta—between the system's active runtime operations and its constitutional boundary limits.
+          </p>
+          <p>
+            When a model's behavior shifts due to prompt changes, weight updates, or cumulative contextual drift, the Instrument calculates real-time compliance metrics. These scores allow technical leaders to spot degradation in rule enforcement, boundary breaches, or prompt-injection vulnerabilities long before they lead to operational failures.
+          </p>
+          <p>
+            The Delta Instrument interfaces directly with the CIR Diagnostic Engine and the Bainbridge Warning framework. By turning qualitative assessment criteria into quantitative telemetry targets, the Instrument provides the operational dashboard needed to establish a proactive, continuous, and automated AI compliance posture.
+          </p>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Measurement Metrics
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-text-secondary">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Constitutional Drift Delta
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Boundary Breach Frequency
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Rule Evasion Probability
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Epistemic Drift Telemetry
+              </li>
+            </ul>
+          </div>
+
+          <!-- Alert Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Technical Briefs</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Telemetry schema mappings and API integration guidelines are undergoing security audit reviews.
+            </p>
+            <a 
+              href="mailto:info@oscillatoryfields.com?subject=Delta%20Instrument%20Information" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Request Specs &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

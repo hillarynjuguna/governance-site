@@ -1,0 +1,114 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const title = 'RSPS Architecture';
+const description = 'Multi-model cognitive orchestration and constitutional security fabric for autonomous systems.';
+const canonical = '/rsps-architecture';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'RSPS Architecture', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema(title, description, canonical)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">RSPS Architecture</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        System Specification / Layer 4: Cognitive Orchestration
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        RSPS Architecture
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          A multi-model orchestration design pattern — governance emerges from the relationships between human decision-makers and AI systems, not from a single control point.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            The Recursive Self-Programming System (RSPS) is an architectural framework designed to manage and govern multi-node cognitive execution. When multiple autonomous models collaborate to perform complex tasks, standard prompt-level constraints break down. RSPS establishes a structural coordinate space where execution rules are treated as system-level invariants rather than probabilistic inputs.
+          </p>
+          <p>
+            At the core of the RSPS design is the distinction between capability layers and oversight layers. Rather than relying on a single, monolithic model to self-monitor, RSPS partitions execution across a network of specialized nodes. By separating execution nodes from constitutional monitoring nodes, the system ensures that no single model has both the authority to act and the sole responsibility to review.
+          </p>
+          <p>
+            This multi-model cognitive orchestration operates via the L4/L5 Overstory Architecture. The execution nodes (Layer 4) generate candidate actions and code modifications, which must then pass through the Constitutional Validation Layer (Layer 5). The L5 validation nodes check candidate states against immutable safety rules (such as reversibility gates and component boundaries) prior to committing any state change.
+          </p>
+          <p>
+            By formalizing the relationships between humans, execution models, and evaluation models, RSPS ensures that governance is a property of system architecture rather than prompting luck. This structure enforces clear provenance paths, making every operational phase auditable, reproducible, and verifiable.
+          </p>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Structural Components
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-text-secondary">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Constitutional Security Fabric
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                L4/L5 Overstory Partitioning
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                State-Transition Invariants
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Decoupled Oversight Registry
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coming Soon Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Documentation Release</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Full specification draft and starter configuration packs are undergoing technical reviews.
+            </p>
+            <a 
+              href="mailto:info@oscillatoryfields.com?subject=RSPS%20Architecture%20Inquiry" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Request Spec Access &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

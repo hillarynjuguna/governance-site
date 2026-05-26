@@ -1,0 +1,140 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getCourseSchema } from '../utils/structured-data';
+
+const title = 'Martha Course';
+const description = 'A 12-module constitutional AI governance curriculum for technical practitioners.';
+const canonical = '/martha-course';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'Martha Course', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getCourseSchema('Constitutional AI Governance (Martha Course)', description)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Martha Course</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Practitioner Education / Curriculum
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        The Martha Course
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          A 12-module practitioner training program — turns governance policies into architectural practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            The Martha Course is a structured, 12-module engineering curriculum developed to bridge the gap between high-level policy frameworks and production-level system design. Traditional AI safety curricula focus heavily on theoretical alignment models. The Martha Course focuses on practical implementation: how to build, deploy, and maintain runtime structures that guarantee system accountability.
+          </p>
+          <p>
+            The curriculum is designed for technical decision-makers, system architects, and compliance officers who must translate standards like the NIST AI Risk Management Framework or the EU AI Act into concrete codebases. Each module combines architectural theory, live diagnostic session case studies, and hands-on exercises in configuring state invariants, event ledgers, and data contracts.
+          </p>
+          <p>
+            Throughout the course, practitioners work directly with Oscillatory Fields diagnostic tools. From mapping governance activation gaps using the Bainbridge Warning to structuring model interactions with Sovereign Types, students build a working, compliant multi-agent system from the ground up, verifying its safety posture using the CIR Diagnostic Engine at every step.
+          </p>
+          <p>
+            By the completion of the program, participants understand how to transition their organizations from "governance theater" (purely policies and manuals) to "structural governance" (verifiable system invariants). Graduates gain the skills required to establish audit trails and design robust, self-policing architectures.
+          </p>
+
+          <!-- Module Grid -->
+          <div class="border-t border-border-subtle pt-8 mt-8">
+            <h2 class="font-display text-xl text-text-primary mb-6">Curriculum Structure</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { m: 'Module 01', t: 'Foundations of Constitutional AI' },
+                { m: 'Module 02', t: 'Mapping the Behavioral Layer (BVL)' },
+                { m: 'Module 03', t: 'Designing Reversibility Gates' },
+                { m: 'Module 04', t: 'Syntax Validation & Sovereign Types' },
+                { m: 'Module 05', t: 'Event Ledgers & Ledger DB Setup' },
+                { m: 'Module 06', t: 'CIR Engine Integration' },
+                { m: 'Module 07', t: 'Bainbridge Assessment Methods' },
+                { m: 'Module 08', t: 'Multi-Agent Boundaries' },
+                { m: 'Module 09', t: 'Telemetry & Gap Measurement' },
+                { m: 'Module 10', t: 'Audit Trail Provenance (CPF)' },
+                { m: 'Module 11', t: 'Compliance Mapping (ISO/IEC 42001)' },
+                { m: 'Module 12', t: 'Capstone: Production System Audit' },
+              ].map((mod) => (
+                <div class="p-3 border border-border-subtle bg-surface rounded-md">
+                  <span class="font-mono text-xs text-amber-600 block">{mod.m}</span>
+                  <span class="font-body text-sm text-text-primary font-semibold block mt-1">{mod.t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Course Details
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-text-secondary">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Duration: 12 Weeks (Self-Paced / Cohort)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Level: Technical Intermediate to Advanced
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Format: Video Lectures, Lab Sandboxes, Reviews
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Certification: Certified Governance Architect
+              </li>
+            </ul>
+          </div>
+
+          <!-- Enroll Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Enrollment Open</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              Registration is open for the upcoming cohort. Private corporate training options are available.
+            </p>
+            <a 
+              href="mailto:info@oscillatoryfields.com?subject=Martha%20Course%20Enrollment" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Request Syllabus &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

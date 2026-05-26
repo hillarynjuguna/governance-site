@@ -1,0 +1,114 @@
+---
+import Layout from '@/components/layout/Layout.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../utils/structured-data';
+
+const title = 'Sovereign Types';
+const description = 'Data contract specifications for defining boundaries between human authority and AI action.';
+const canonical = '/sovereign-types';
+
+const breadcrumbs = [
+  { name: 'Home', urlPath: '/' },
+  { name: 'Sovereign Types', urlPath: canonical }
+];
+
+const schemas = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema(title, description, canonical)
+];
+---
+
+<Layout title={title} description={description} schemas={schemas}>
+  <!-- Breadcrumbs -->
+  <nav class="pt-24 pb-4">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-text-secondary">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <span class="text-text-muted">/</span>
+        <span class="text-text-primary">Sovereign Types</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pb-12">
+    <div class="mx-auto max-w-container px-6">
+      <span class="font-mono text-xs tracking-wider text-accent uppercase">
+        Data Contract Layer / Layer 2: Syntactic Provenance
+      </span>
+      <h1 class="font-display text-4xl sm:text-5xl text-text-primary mt-4">
+        Sovereign Types
+      </h1>
+      
+      <!-- In Plain English Callout -->
+      <div class="mt-8 p-5 border-l-2 border-amber-600 bg-surface rounded-r-md">
+        <span class="font-mono text-xs text-amber-600 uppercase block mb-1">In Plain English</span>
+        <p class="text-sm text-text-primary leading-relaxed font-body">
+          Data contract specifications for defining boundaries between human authority and AI action.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substantive Content -->
+  <section class="py-12 border-t border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            Sovereign Types introduce strict, runtime-enforced type definitions designed specifically for human-AI epistemic boundaries. Within complex pipelines, runtime states often drift due to unstructured, probabilistic model responses. Sovereign Types act as a deterministic firewall, forcing all model outputs to conform to highly structured schemas that preserve decision origin, authority, and action scope.
+          </p>
+          <p>
+            A core challenge of agentic systems is the "provenance handoff" problem: tracking the exact pedigree of an instruction, verification, or state mutation. Sovereign Types solve this by attaching verifiable epistemic metadata directly to the type system. Every payload carrying a Sovereign Type contains cryptographically signed tokens indicating which human verified the rule, under what constraints, and the allowable margin of action.
+          </p>
+          <p>
+            This system underpins the Common Provenance Framework (CPF) and the Cognitive Memory Context Protocol (CMCP). By structuring data handoffs with sovereign schemas, development teams ensure that when a model issues an execution command, the runtime environment can parse and validate the exact lineage of authority before executing database updates, financial transactions, or system state changes.
+          </p>
+          <p>
+            Integrating Sovereign Types into the codebase moves governance out of documentation and directly into the compiler. If an execution flow attempts to bypass a human verification gate or mutate state without a validated provenance path, the type constraints trigger compilation failures or runtime halts, guaranteeing system integrity at the syntactic layer.
+          </p>
+        </div>
+
+        <!-- Sidebar / Details -->
+        <div class="space-y-6">
+          <div class="p-6 border border-border-color bg-surface rounded-lg">
+            <h3 class="font-mono text-xs text-text-primary uppercase tracking-widest mb-4">
+              Key Features
+            </h3>
+            <ul class="space-y-3 font-mono text-xs text-text-secondary">
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Cryptographic Handoff Schemas
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Epistemic Provenance Tokens
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                Compiler-Level Enforcement
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                CMCP/CPF Integration
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coming Soon Callout -->
+          <div class="p-6 border border-amber-600/30 bg-surface-raised rounded-lg text-xs font-mono">
+            <span class="text-amber-500 uppercase tracking-widest block mb-2">Beta Availability</span>
+            <p class="text-text-secondary leading-relaxed mb-4">
+              TypeScript declarations and JSON Schema generator libraries are in early access testing.
+            </p>
+            <a 
+              href="mailto:info@oscillatoryfields.com?subject=Sovereign%20Types%20Spec%20Request" 
+              class="inline-block text-accent hover:text-amber-500 transition-colors"
+            >
+              Request Schema Specs &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
