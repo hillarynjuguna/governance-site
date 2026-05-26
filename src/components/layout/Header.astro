@@ -1,44 +1,49 @@
 ---
-import { primaryNav } from '@/data/navigation';
-
 const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'CIR Diagnostic', href: '/cir-diagnostic-engine', badge: 'Live' },
+  { label: 'Bainbridge Warning', href: '/bainbridge-warning' },
+  { label: 'RSPS Architecture', href: '/rsps-architecture' },
+  { label: 'CE-Ledger', href: '/ce-ledger' },
+  { label: 'Martha Course', href: '/martha-course' },
+  { label: 'Premise', href: '/premise' }
+];
 ---
 
-<header
-  class="sticky top-0 z-50 border-b border-border-subtle transition-all duration-300"
-  style="backdrop-filter: blur(12px); background: rgba(11,14,20,0.85);"
->
+<header class="sticky top-0 z-50 bg-ground/85 backdrop-blur-md border-b border-border-subtle">
   <div class="mx-auto flex max-w-container items-center justify-between px-6 py-4">
     <!-- Brand -->
-    <a href="/" class="flex flex-col gap-0">
+    <a href="/" class="flex flex-col gap-0 shrink-0">
       <span class="font-display text-lg leading-tight tracking-tight text-text-primary">
         Oscillatory Fields
       </span>
-      <span class="font-mono text-xs text-text-muted tracking-wide">
-        hillary njuguna
+      <span class="font-mono text-[10px] text-text-muted tracking-wide uppercase">
+        Governance System
       </span>
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden lg:flex items-center gap-8">
-      {primaryNav.map((item) => (
+    <nav class="hidden xl:flex items-center gap-6">
+      {navItems.map((item) => (
         <a
           href={item.href}
-          class={`relative text-sm font-medium transition-colors duration-200 ${
-            currentPath === item.href || currentPath.startsWith(item.href + '/')
-              ? 'text-accent'
+          class={`relative text-xs font-mono tracking-wider uppercase transition-colors duration-200 py-1 ${
+            currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+              ? 'text-amber-600'
               : 'text-text-secondary hover:text-text-primary'
           }`}
         >
           {item.label}
           {item.badge && (
-            <span class="ml-1 inline-flex items-center gap-1 text-xs text-deployed">
-              <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed animate-pulse" />
+            <span class="ml-1 inline-flex items-center gap-1 text-[10px] font-mono text-emerald-500 lowercase">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               {item.badge}
             </span>
           )}
-          {(currentPath === item.href || currentPath.startsWith(item.href + '/')) && (
-            <span class="absolute -bottom-1 left-0 h-px w-full bg-accent" />
+          {(currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))) && (
+            <span class="absolute -bottom-1 left-0 h-0.5 w-full bg-amber-600" />
           )}
         </a>
       ))}
@@ -48,7 +53,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center gap-4">
       <a
         href="/cir-diagnostic-engine"
-        class="hidden sm:inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-text-inverse transition-opacity hover:opacity-90"
+        class="hidden sm:inline-flex items-center gap-2 rounded-md bg-amber-600 px-4 py-2 text-xs font-mono uppercase tracking-wider text-white transition-colors hover:bg-amber-500"
       >
         Run Diagnostic
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -59,7 +64,7 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile hamburger -->
       <button
         id="mobile-menu-toggle"
-        class="lg:hidden p-2 text-text-secondary hover:text-text-primary"
+        class="xl:hidden p-2 text-text-secondary hover:text-text-primary"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
@@ -73,28 +78,37 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile drawer -->
   <div
     id="mobile-menu"
-    class="lg:hidden overflow-hidden transition-all duration-300 ease-out"
+    class="xl:hidden overflow-hidden transition-all duration-300 ease-out"
     style="max-height: 0;"
   >
     <nav class="border-t border-border-subtle px-6 py-4 flex flex-col gap-3">
-      {primaryNav.map((item) => (
+      {navItems.map((item) => (
         <a
           href={item.href}
-          class={`text-sm font-medium py-1 transition-colors ${
-            currentPath === item.href || currentPath.startsWith(item.href + '/')
-              ? 'text-accent'
+          class={`text-xs font-mono tracking-wider uppercase py-1 transition-colors ${
+            currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+              ? 'text-amber-600'
               : 'text-text-secondary hover:text-text-primary'
           }`}
         >
           {item.label}
           {item.badge && (
-            <span class="ml-2 inline-flex items-center gap-1 text-xs text-deployed">
-              <span class="inline-block h-1.5 w-1.5 rounded-full bg-deployed" />
+            <span class="ml-2 inline-flex items-center gap-1 text-[10px] font-mono text-emerald-500 lowercase">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
               {item.badge}
             </span>
           )}
         </a>
       ))}
+      <a
+        href="/cir-diagnostic-engine"
+        class="inline-flex items-center justify-center gap-2 rounded-md bg-amber-600 px-4 py-2.5 text-xs font-mono uppercase tracking-wider text-white transition-colors hover:bg-amber-500 mt-2"
+      >
+        Run Diagnostic
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </nav>
   </div>
 </header>
@@ -107,6 +121,6 @@ const currentPath = Astro.url.pathname;
   toggle?.addEventListener('click', () => {
     open = !open;
     toggle.setAttribute('aria-expanded', String(open));
-    menu!.style.maxHeight = open ? '400px' : '0';
+    menu!.style.maxHeight = open ? '450px' : '0';
   });
 </script>

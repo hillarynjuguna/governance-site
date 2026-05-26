@@ -2,6 +2,7 @@
 import Layout from '@/components/layout/Layout.astro';
 import { getTermBySlug } from '../data/glossary';
 import { getBreadcrumbSchema, getSoftwareApplicationSchema } from '../utils/structured-data';
+import RadarChart from '@/components/cir/RadarChart';
 
 const term = getTermBySlug('cir-diagnostic-engine');
 const schemas = [
@@ -69,6 +70,13 @@ const schemas = [
           View methodology &rarr;
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Simulator Section -->
+  <section class="pb-16">
+    <div class="mx-auto max-w-container px-6">
+      <RadarChart client:load />
     </div>
   </section>
 

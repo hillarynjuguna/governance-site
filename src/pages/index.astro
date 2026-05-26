@@ -1,43 +1,245 @@
 ---
 import Layout from '@/components/layout/Layout.astro';
-import HeroSection from '@/components/home/HeroSection.astro';
-import AudienceRouter from '@/components/home/AudienceRouter.astro';
-import CoreCapabilities from '@/components/home/CoreCapabilities.astro';
-import CIRFeaturedCTA from '@/components/home/CIRFeaturedCTA.astro';
-import ImpactStories from '@/components/home/ImpactStories.astro';
-import ThoughtLeadershipStrip from '@/components/home/ThoughtLeadershipStrip.astro';
-import Ticker from '@/components/home/Ticker.astro';
+import StackDiagram from '@/components/home/StackDiagram';
+import { glossaryTerms } from '../data/glossary';
+import { caseStudies } from '../data/case-studies';
+import { getBreadcrumbSchema, getOrganizationSchema, getWebSiteSchema } from '../utils/structured-data';
+
+const schemas = [
+  getBreadcrumbSchema([{ name: 'Home', urlPath: '/' }]),
+  getOrganizationSchema(),
+  getWebSiteSchema()
+];
 ---
 
 <Layout
   title="Governed Intelligence | Oscillatory Fields"
-  description="Structural governance for AI deployment architectures. The front door to the Bainbridge Warning, CIR Diagnostic Engine, and Constitutional Validation."
+  description="Governance infrastructure for AI systems that have real consequences. Explore runtime validation, constitutional diagnostics, and verification contracts."
+  schemas={schemas}
 >
-  <HeroSection />
-  <AudienceRouter />
-  <CoreCapabilities />
-  <CIRFeaturedCTA />
-  <ImpactStories />
-  <ThoughtLeadershipStrip />
-  
-  <section class="py-16 border-t border-border-subtle bg-surface/50">
-    <div class="mx-auto max-w-container px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-      <div>
-        <span class="font-mono text-xs tracking-wider text-amber-600 uppercase block mb-2">Systems &amp; Audits</span>
-        <h2 class="font-display text-2xl sm:text-3xl text-text-primary">
-          Explore governance primitives and real-world audits.
-        </h2>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-4 shrink-0">
-        <a href="/glossary" class="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-border-subtle bg-surface text-sm font-medium text-text-primary hover:border-amber-600 transition-colors">
-          Explore the full governance stack &rarr;
-        </a>
-        <a href="/case-studies/multi-agent-deployment-audit" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-amber-600 text-white text-sm font-medium hover:bg-amber-500 transition-colors">
-          Read case studies &rarr;
-        </a>
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden border-b border-border-subtle bg-gradient-to-b from-ground to-surface/20">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div
+        class="absolute top-1/4 left-1/4 h-96 w-96 rounded-full opacity-[0.05]"
+        style="background: radial-gradient(circle, var(--color-accent), transparent 70%);"
+      />
+    </div>
+
+    <div class="mx-auto max-w-container px-6 py-24 w-full">
+      <div class="flex flex-col gap-6 max-w-4xl">
+        <span class="font-mono text-xs tracking-wider text-amber-600 uppercase">
+          Ecosystem Overview / Relational AI Control
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-text-primary leading-[1.1]">
+          Governance Infrastructure for AI Systems That Have Real Consequences.
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary max-w-2xl leading-relaxed">
+          Constitutional safety layers, runtime diagnostics, and strict execution boundaries. Moving AI security from high-level principles to verifiable infrastructure.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-4">
+          <a
+            href="/cir-diagnostic-engine"
+            class="inline-flex items-center gap-2 rounded-md bg-amber-600 px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-white transition-all hover:bg-amber-500"
+          >
+            Run CIR Diagnostic
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/glossary"
+            class="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary transition-all hover:text-text-primary hover:border-text-muted"
+          >
+            Explore the Stack
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <Ticker />
+  <!-- What This Is Section -->
+  <section class="py-24 border-b border-border-subtle bg-surface/30">
+    <div class="mx-auto max-w-container px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+          <span class="font-mono text-xs text-amber-600 uppercase tracking-widest block mb-2">Our Philosophy</span>
+          <h2 class="font-display text-3xl text-text-primary">Verifiable Control Over Autonomous Systems</h2>
+        </div>
+        <div class="lg:col-span-8 flex flex-col gap-6 text-sm text-text-secondary leading-relaxed font-body">
+          <p>
+            AI safety cannot be accomplished by mere policy theatre or semantic guidelines alone. As machine learning models transition from passive advisory assistants to autonomous operational agents with system-level execution authority, the surface area for failure expands exponentially. Traditional risk frameworks that treat models as isolated black boxes fail to account for the relational complexity of multi-model orchestration, where system failures are systemic rather than localized.
+          </p>
+          <p>
+            We build governance infrastructure that bridges the gap between high-level alignment principles and runtime validation. By treating AI governance as an architectural primitive rather than an afterthought, our systems enforce structural safeguards—such as component boundaries, immutable event ledger tracking, and deterministic runtime restrictions—directly at the execution layer. This ensures that system constraints hold true even when underlying model behavior drifts.
+          </p>
+          <p>
+            Through active auditing, diagnostic simulators like the CIR Engine, and rigorous data-contract definitions, we help organizations transition from blind trust to verifiable governance. Our work is grounded in the Bainbridge Warning: a diagnostic threshold showing that as capability increases, systemic vulnerability rises unless accompanied by a proportional increase in structural control. We provide the tools, schemas, and blueprints to build AI systems that remain safe under real-world operational pressure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Stack Section -->
+  <section class="py-24 border-b border-border-subtle" id="stack">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex flex-col gap-4 mb-16">
+        <span class="font-mono text-xs text-amber-600 uppercase tracking-widest block">Structural Hierarchy</span>
+        <h2 class="font-display text-3xl text-text-primary">The 5-Layer Governance Model</h2>
+        <p class="text-sm text-text-secondary max-w-xl leading-relaxed">
+          Our system separates governance concerns into five distinct structural layers, spanning human agency down to raw protocol data structures.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
+        {[
+          {
+            num: 'L5',
+            name: 'Sovereign Layer',
+            desc: 'Defines Tau-Node human agency, setting the execution bounds and high-level behavioral intent constraints.',
+            color: 'border-purple-500/40 bg-purple-500/5'
+          },
+          {
+            num: 'L4',
+            name: 'Translational Layer',
+            desc: 'Bridges cognitive theory to engineering practice via education programs like the Martha Course.',
+            color: 'border-indigo-500/40 bg-indigo-500/5'
+          },
+          {
+            num: 'L3',
+            name: 'Operational Layer',
+            desc: 'Audits runtime safety via the CIR Engine and tracks system deviations via the Delta Instrument.',
+            color: 'border-emerald-500/40 bg-emerald-500/5'
+          },
+          {
+            num: 'L2',
+            name: 'Infrastructural Layer',
+            desc: 'Manages multi-model orchestration via RSPS and outputs immutable decision logs via CE-Ledger.',
+            color: 'border-blue-500/40 bg-blue-500/5'
+          },
+          {
+            num: 'L1',
+            name: 'Foundational Layer',
+            desc: 'Sets semantic data schemas via sovereign-types and defines risk thresholds via the Bainbridge Warning.',
+            color: 'border-amber-500/40 bg-amber-500/5'
+          }
+        ].map((layer) => (
+          <div class={`p-6 rounded-xl border ${layer.color} flex flex-col justify-between h-52`}>
+            <span class="font-mono text-lg font-bold text-text-primary block">{layer.num}</span>
+            <div>
+              <h3 class="font-body text-sm font-semibold text-text-primary mb-2">{layer.name}</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">{layer.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Stack Diagram -->
+  <section class="py-24 border-b border-border-subtle bg-surface/10">
+    <div class="mx-auto max-w-container px-6">
+      <StackDiagram client:load />
+    </div>
+  </section>
+
+  <!-- Real Impact Case Studies -->
+  <section class="py-24 border-b border-border-subtle">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-4">
+          <span class="font-mono text-xs text-amber-600 uppercase tracking-widest block">Audit Records</span>
+          <h2 class="font-display text-3xl text-text-primary">Real-World Diagnostics</h2>
+        </div>
+        <a href="/case-studies/multi-agent-deployment-audit" class="text-xs font-mono uppercase text-amber-600 hover:text-amber-500 transition-colors">
+          View All Case Studies &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {caseStudies.map((cs) => (
+          <div class="p-6 rounded-xl border border-border-subtle bg-surface flex flex-col justify-between hover:border-amber-600 transition-colors">
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[9px] uppercase tracking-wider text-amber-600 border border-amber-600/30 px-2 py-0.5 rounded-full">
+                  {cs.toolUsed}
+                </span>
+                <span class="font-mono text-[10px] text-text-muted">{cs.datePublished}</span>
+              </div>
+              <div>
+                <h3 class="font-body text-base font-semibold text-text-primary leading-snug">
+                  {cs.title}
+                </h3>
+                <p class="text-xs text-text-secondary leading-normal mt-1">{cs.subtitle}</p>
+              </div>
+              <div class="border-t border-border-subtle pt-4 flex flex-col gap-3">
+                <div>
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-text-muted block">Problem</span>
+                  <p class="text-xs text-text-secondary leading-relaxed mt-0.5 line-clamp-3">{cs.problem}</p>
+                </div>
+                <div>
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-text-muted block">Method</span>
+                  <p class="text-xs text-text-secondary leading-relaxed mt-0.5 line-clamp-3">{cs.method}</p>
+                </div>
+                <div>
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-text-muted block">Outcome</span>
+                  <p class="text-xs text-text-secondary leading-relaxed mt-0.5 line-clamp-3">{cs.outcome}</p>
+                </div>
+              </div>
+            </div>
+            <a
+              href={`/case-studies/${cs.slug}`}
+              class="inline-flex items-center gap-1.5 text-xs font-mono uppercase text-amber-600 hover:text-amber-500 transition-colors mt-6 pt-4 border-t border-border-subtle"
+            >
+              Read Full Case Study
+              <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Primitives Glossary Grid -->
+  <section class="py-24 bg-surface/30">
+    <div class="mx-auto max-w-container px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div class="flex flex-col gap-4">
+          <span class="font-mono text-xs text-amber-600 uppercase tracking-widest block">System Primitives</span>
+          <h2 class="font-display text-3xl text-text-primary">Ecosystem Glossary</h2>
+        </div>
+        <a href="/glossary" class="text-xs font-mono uppercase text-amber-600 hover:text-amber-500 transition-colors">
+          View Glossary &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {glossaryTerms.slice(0, 6).map((term) => (
+          <div class="p-5 rounded-lg border border-border-subtle bg-surface flex flex-col justify-between hover:border-amber-600/50 transition-colors">
+            <div>
+              <span class="font-mono text-[9px] uppercase tracking-wider text-text-muted block mb-1">
+                Primitive: {term.slug}
+              </span>
+              <h3 class="font-body text-base font-semibold text-text-primary">{term.name}</h3>
+              <p class="text-xs text-text-secondary leading-relaxed mt-2 line-clamp-3">
+                {term.definition}
+              </p>
+            </div>
+            <a
+              href={`/glossary#${term.slug}`}
+              class="inline-flex items-center gap-1 text-xs font-mono uppercase text-amber-600 hover:text-amber-500 transition-colors mt-4 pt-3 border-t border-border-subtle"
+            >
+              Read Definition
+              <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
